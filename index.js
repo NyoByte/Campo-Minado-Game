@@ -91,6 +91,7 @@ function mover(accion, mapaActual, mapaMinas){
     }
     return result.join("\n")
 }
+
 function obtenerResultado(mapaActual, mapaPrevio){
     if(mapaActual == mapaPrevio){
         return "sin cambios"
@@ -107,6 +108,7 @@ function obtenerResultado(mapaActual, mapaPrevio){
         return "sin mina"
     }    
 }
+
 function obtenerMatrixDeMapa(mapa){
     matrixMapa = mapa.trim().split("\n")
     for(i = 0; i < matrixMapa.length; i++){
@@ -114,6 +116,7 @@ function obtenerMatrixDeMapa(mapa){
     }
     return matrixMapa
 }
+
 //ejemplo
 mapaInicial = `
 0000#
