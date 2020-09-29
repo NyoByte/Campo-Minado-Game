@@ -1,4 +1,4 @@
-function mover(accion, mapaActual, mapaMinas){
+function Mover(accion, mapaActual, mapaMinas){
     acciones = ["up", "down", "left", "right"]
     if(acciones.indexOf(accion) == -1){
         return "error: accion no definida"
@@ -92,7 +92,7 @@ function mover(accion, mapaActual, mapaMinas){
     return result.join("\n")
 }
 
-function obtenerResultado(mapaActual, mapaPrevio){
+function ObtenerResultado(mapaActual, mapaPrevio){
     if(mapaActual == mapaPrevio){
         return "sin cambios"
     }
@@ -109,7 +109,7 @@ function obtenerResultado(mapaActual, mapaPrevio){
     }    
 }
 
-function obtenerMatrixDeMapa(mapa){
+function ObtenerMatrixDeMapa(mapa){
     matrixMapa = mapa.trim().split("\n")
     for(i = 0; i < matrixMapa.length; i++){
         matrixMapa[i] = matrixMapa[i].split("")
@@ -135,40 +135,40 @@ mapaMinas = `
 mapaActual = mapaInicial
 console.log(mapaActual)
 mapaPrevio = mapaActual
-mapaActual = mover("up", mapaActual, mapaMinas)
+mapaActual = Mover("up", mapaActual, mapaMinas)
 console.log(mapaActual)
-console.log(obtenerResultado(mapaActual, mapaPrevio))
+console.log(ObtenerResultado(mapaActual, mapaPrevio))
 mapaPrevio = mapaActual
-mapaActual = mover("up", mapaActual, mapaMinas)
+mapaActual = Mover("up", mapaActual, mapaMinas)
 console.log(mapaActual)
-console.log(obtenerResultado(mapaActual, mapaPrevio))
+console.log(ObtenerResultado(mapaActual, mapaPrevio))
 mapaPrevio = mapaActual
-mapaActual = mover("right", mapaActual, mapaMinas)
+mapaActual = Mover("right", mapaActual, mapaMinas)
 console.log(mapaActual)
-console.log(obtenerResultado(mapaActual, mapaPrevio))
+console.log(ObtenerResultado(mapaActual, mapaPrevio))
 mapaPrevio = mapaActual
-mapaActual = mover("up", mapaActual, mapaMinas)
+mapaActual = Mover("up", mapaActual, mapaMinas)
 console.log(mapaActual)
-console.log(obtenerResultado(mapaActual, mapaPrevio))
+console.log(ObtenerResultado(mapaActual, mapaPrevio))
 mapaPrevio = mapaActual
-mapaActual = mover("up", mapaActual, mapaMinas)
+mapaActual = Mover("up", mapaActual, mapaMinas)
 console.log(mapaActual)
-console.log(obtenerResultado(mapaActual, mapaPrevio))
+console.log(ObtenerResultado(mapaActual, mapaPrevio))
 mapaPrevio = mapaActual
-mapaActual = mover("right", mapaActual, mapaMinas)
+mapaActual = Mover("right", mapaActual, mapaMinas)
 console.log(mapaActual)
-console.log(obtenerResultado(mapaActual, mapaPrevio))
+console.log(ObtenerResultado(mapaActual, mapaPrevio))
 mapaPrevio = mapaActual
-mapaActual = mover("right", mapaActual, mapaMinas)
+mapaActual = Mover("right", mapaActual, mapaMinas)
 console.log(mapaActual)
-console.log(obtenerResultado(mapaActual, mapaPrevio))
+console.log(ObtenerResultado(mapaActual, mapaPrevio))
 mapaPrevio = mapaActual
-mapaActual = mover("right", mapaActual, mapaMinas)
+mapaActual = Mover("right", mapaActual, mapaMinas)
 console.log(mapaActual)
-console.log(obtenerResultado(mapaActual, mapaPrevio))
+console.log(ObtenerResultado(mapaActual, mapaPrevio))
 mapaPrevio = mapaActual
-mapaActual = mover("right", mapaActual, mapaMinas)
+mapaActual = Mover("right", mapaActual, mapaMinas)
 console.log(mapaActual)
-console.log(obtenerResultado(mapaActual, mapaPrevio))
+console.log(ObtenerResultado(mapaActual, mapaPrevio))
 // 
-console.log(obtenerMatrixDeMapa(mapaActual))
+console.log(ObtenerMatrixDeMapa(mapaActual))
