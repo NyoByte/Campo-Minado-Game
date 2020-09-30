@@ -178,8 +178,23 @@ function OnClickInstrucciones(){
     $('#modalInstrucciones').modal('show')
 }
 
+var botonJugarOnClick = function(){
+    $('.carousel').carousel(1)
+}
+
+var botonNuevoJuegoOnClick = function(){
+    $('.carousel').carousel(0)
+}
+
+function inicializarFuncionesCarousel(){
+    $('.carousel').carousel('pause')
+    document.querySelector("#boton_jugar").addEventListener("click", botonJugarOnClick)
+    document.querySelector("#boton_nuevo_juego").addEventListener("click", botonNuevoJuegoOnClick)
+}
+
 var main = function(){
     document.getElementById("butInstrucciones").onclick = OnClickInstrucciones;
+    inicializarFuncionesCarousel()
 }
 
 window.addEventListener("load", main)

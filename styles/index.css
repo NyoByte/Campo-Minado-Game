@@ -40,3 +40,8 @@ body{
     text-align: center;
     font-size: 22px;
 }
+
+.carousel_juego{
+    width: 100%;
+    height: 100%;
+}
