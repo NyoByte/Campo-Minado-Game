@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Campo Minado Game</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--Bootstrap-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <!--CSS-->
+        <link rel="stylesheet" type="text/css" href="../styles/index.css">
+        <!--Google fonts-->
+        <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">        
+        <!--JS de Bootstrap-->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    </head>
+    <body class="container">
+        <!--Ventana modal de bienvenida-->
+        <div class="modal fade letra_instrucciones" id="modalInstrucciones" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Instrucciones:</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span> <!--es la X-->
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            El terreno ha sido minado con explosivos por un ataque terrorista
+                            y hay un único sobreviviente. Tu misión es controlar al robot para
+                            que llegue al sobreviviente y lo pueda rescatar. El robot solamente
+                            puede soportar 3 explosiones, es decir, queda totalmente destruido
+                            en la 4ta detonación. Si ese fuere el caso, se podrá enviar un robot nuevo.
+                        </p>
+                        <p>
+                            Reglas:</br>
+                            1. Aquí va la primera regla del juego</br>
+                            2. Aquí va la segunda regla del juego</br>
+                            3. Aquí va la tercera regla del juego</br>
+                            4. Aquí va la cuarta regla del juego</br>
+                            5. Aquí va la quinta regla del juego</br>
+                            6. Aquí va la sexta regla del juego</br>
+                            7. Aquí va la séptima regla del juego</br>
+                            8. Aquí va la octava regla del juego</br>
+                            9. Aquí va la novena regla del juego</br>
+                            10. Aquí va la décima regla del juego</br>
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Fin ventana modal-->
+        <div class="row text-center cover-container d-flex h-100 p-3 mx-auto flex-column">
+            <header class="masthead mb-auto"> </header>
+            <main role="main" class="inner-cover">
+                <h1 class="cover-heading" id="titulo_principal">CAMPO MINADO GAME</h1>
+            </main>
+            <footer class="mastfoot mt-auto"></footer>
+        </div>
+        <div class="row">
+            <div class="col-9">
+                <div class="row">
+                    <!--Acá va los componentes-->
+                    Nivel: 1 ////////////// Mapa: Earth ////////////// Vida: ♥ ♥ ♥ ////////////// Respuesta:alivio                   
+                </div>
+                <div class="row">
+                    <!--Acá va el juego-->
+                    <div style="margin-bottom: 5px;">
+                        <img src="../imagenes/map_earth.png" alt="Imagen responsive" class="img-fluid"/>
+                        <img src="../imagenes/map_earth.png" alt="Imagen responsive" class="img-fluid"/>
+                        <img src="../imagenes/map_earth.png" alt="Imagen responsive" class="img-fluid"/>
+                        <img src="../imagenes/map_earth.png" alt="Imagen responsive" class="img-fluid"/>
+                        <img src="../imagenes/map_earth.png" alt="Imagen responsive" class="img-fluid"/>
+                    </div>
+                    <div style="margin-bottom: 5px;">
+                        <img src="../imagenes/map_earth.png" alt="Imagen responsive" class="img-fluid"/>
+                        <img src="../imagenes/map_earth.png" alt="Imagen responsive" class="img-fluid"/>
+                        <img src="../imagenes/map_earth.png" alt="Imagen responsive" class="img-fluid"/>
+                        <img src="../imagenes/map_earth.png" alt="Imagen responsive" class="img-fluid"/>
+                        <img src="../imagenes/map_earth.png" alt="Imagen responsive" class="img-fluid"/>
+                    </div>
+                    <div style="margin-bottom: 5px;">
+                        <img src="../imagenes/map_earth.png" alt="Imagen responsive" class="img-fluid"/>
+                        <img src="../imagenes/map_earth.png" alt="Imagen responsive" class="img-fluid"/>
+                        <img src="../imagenes/map_earth.png" alt="Imagen responsive" class="img-fluid"/>
+                        <img src="../imagenes/map_earth.png" alt="Imagen responsive" class="img-fluid"/>
+                        <img src="../imagenes/map_earth.png" alt="Imagen responsive" class="img-fluid"/>
+                    </div>
+                    <div style="margin-bottom: 5px;">
+                        <img src="../imagenes/map_earth.png" alt="Imagen responsive" class="img-fluid"/>
+                        <img src="../imagenes/map_earth.png" alt="Imagen responsive" class="img-fluid"/>
+                        <img src="../imagenes/map_earth.png" alt="Imagen responsive" class="img-fluid"/>
+                        <img src="../imagenes/map_earth.png" alt="Imagen responsive" class="img-fluid"/>
+                        <img src="../imagenes/map_earth.png" alt="Imagen responsive" class="img-fluid"/>
+                    </div>
+                    <div style="margin-bottom: 5px;">
+                        <img src="../imagenes/map_earth.png" alt="Imagen responsive" class="img-fluid"/>
+                        <img src="../imagenes/map_earth.png" alt="Imagen responsive" class="img-fluid"/>
+                        <img src="../imagenes/map_earth.png" alt="Imagen responsive" class="img-fluid"/>
+                        <img src="../imagenes/map_earth.png" alt="Imagen responsive" class="img-fluid"/>
+                        <img src="../imagenes/map_earth.png" alt="Imagen responsive" class="img-fluid"/>
+                    </div>
+                    
+                </div>               
+            </div>
+            <div class="col-3">
+                <!--Acá va el panel-->
+                <div class="row">
+                    <!--Acá va el profile robot-->
+                    <figure class="figura_contenido">
+                        <img src="../imagenes/profile_player.jpg" alt="" srcset="">
+                        <figcaption>Player</figcaption>
+                    </figure>                 
+                </div>
+                <!--Acá va las opciones-->  
+                <div class="row">
+                    <div class="text-center cover-container d-flex p-3 mx-auto flex-column">
+                        <header class="masthead mb-auto"></header>
+                        <main role="main" class="inner-cover">             
+                            <div class="lead p-2 letra_botones">
+                                <button id="butInstrucciones" class="btn btn-info btn-lg">Instrucciones</buttton>
+                            </div>
+                            <div class="lead p-2 letra_botones">
+                                <a href="main.html" class="btn btn-primary btn-lg">Nuevo juego</a>
+                            </div>
+                            <div class="lead p-2 letra_botones">
+                                <a href="info.html" class="btn btn-secondary btn-lg" target="="_blank">Acerca de</a>
+                            </div>
+                        </main>   
+                        <footer class="mastfoot mt-auto"></footer>      
+                    </div>
+                </div>
+                <div class="row">
+                    <!--Acá va las direcciones-->
+                    <button><img src="../imagenes/flechas.png" alt=""></button>
+                </div>
+            </div>
+        <script src="../scripts/main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,42 @@
+body{
+    font-family: 'VT323', monospace;
+}
+
+/*PARTE DE MAIN DEL JUEGO*/
+.letra_botones{
+    font-family: 'VT323', monospace;
+}
+.figura_contenido{
+    text-align: center;
+    font-family: 'VT323', monospace;
+    font-size: 22px;
+}
+
+/*PARTE DE INTRUCCIONES*/
+.letra_instrucciones{
+    text-align: center;
+    font-family: 'VT323', monospace;
+    text-align: left;
+}
+
+/*PARTE DE MENÚ PRINCIPAL*/
+#titulo_principal{
+    font-family: 'VT323', monospace;
+    font-size: 60px;
+}
+.titulo{
+    font-size: 45px;
+}
+
+/*PARTE DE ACERCA DE*/
+.info_letra{
+    font-family: 'VT323', monospace;
+    font-size: 18px;
+}
+.info_titulo{
+    font-size: 45px;
+}
+.info_figura_contenido{
+    text-align: center;
+    font-size: 22px;
+}

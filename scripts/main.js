@@ -172,3 +172,14 @@ console.log(mapaActual)
 console.log(ObtenerResultado(mapaActual, mapaPrevio))
 // 
 console.log(ObtenerMatrixDeMapa(mapaActual))
+
+
+function OnClickInstrucciones(){
+    $('#modalInstrucciones').modal('show')
+}
+
+var main = function(){
+    document.getElementById("butInstrucciones").onclick = OnClickInstrucciones;
+}
+
+window.addEventListener("load", main)
