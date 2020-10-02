@@ -56,136 +56,99 @@
         </div>
         <!--Fin ventana modal-->
         <div class="row justify-content-center">
-            <h1 id="titulo_principal">CAMPO MINADO GAME</h1>
+            <h1>CAMPO MINADO GAME</h1>
         </div>
         <div class="row">
-            <div class="col-9">
-                <div class="carousel slide carousel-fade carousel_juego" data-ride="carousel">
-                    <div class="carousel-inner carousel_juego">
-                      <div class="carousel-item active carousel_juego" id="carousel_ventanta_boton">
-                        <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-                            <header class="masthead mb-auto"> </header>
-                            <main role="main" class="inner-cover">
-                                <div class="lead p-2 letra_botones">
-                                    <div class="row justify-content-center">
-                                        <button type="button" class="btn btn-primary btn-lg" id="boton_jugar">Jugar</button>
-                                    </div>
-                                </div>
-                           </main>
-                           <footer class="mastfoot mt-auto"></footer>
-                        </div>
-                      </div>
-                      <div class="carousel-item carousel_juego">
-                          <div class="row" style="margin-bottom: 5px;">
-                              <div class="col"><img src="../imagenes/map_earth.png" class="img-fluid" alt=""></div>
-                              <div class="col"><img src="../imagenes/map_earth.png" class="img-fluid" alt=""></div>
-                              <div class="col"><img src="../imagenes/map_earth.png" class="img-fluid" alt=""></div>
-                              <div class="col"><img src="../imagenes/map_earth.png" class="img-fluid" alt=""></div>
-                              <div class="col"><img src="../imagenes/map_earth.png" class="img-fluid" alt=""></div>
-                          </div>
-                          <div class="row" style="margin-bottom: 5px;">
-                            <div class="col"><img src="../imagenes/map_earth.png" class="img-fluid" alt=""></div>
-                            <div class="col"><img src="../imagenes/map_earth.png" class="img-fluid" alt=""></div>
-                            <div class="col"><img src="../imagenes/map_earth.png" class="img-fluid" alt=""></div>
-                            <div class="col"><img src="../imagenes/map_earth.png" class="img-fluid" alt=""></div>
-                            <div class="col"><img src="../imagenes/map_earth.png" class="img-fluid" alt=""></div>
-                        </div>
-                        <div class="row" style="margin-bottom: 5px;">
-                            <div class="col"><img src="../imagenes/map_earth.png" class="img-fluid" alt=""></div>
-                            <div class="col"><img src="../imagenes/map_earth.png" class="img-fluid" alt=""></div>
-                            <div class="col"><img src="../imagenes/map_earth.png" class="img-fluid" alt=""></div>
-                            <div class="col"><img src="../imagenes/map_earth.png" class="img-fluid" alt=""></div>
-                            <div class="col"><img src="../imagenes/map_earth.png" class="img-fluid" alt=""></div>
-                        </div>
-                        <div class="row" style="margin-bottom: 5px;">
-                            <div class="col"><img src="../imagenes/map_earth.png" class="img-fluid" alt=""></div>
-                            <div class="col"><img src="../imagenes/map_earth.png" class="img-fluid" alt=""></div>
-                            <div class="col"><img src="../imagenes/map_earth.png" class="img-fluid" alt=""></div>
-                            <div class="col"><img src="../imagenes/map_earth.png" class="img-fluid" alt=""></div>
-                            <div class="col"><img src="../imagenes/map_earth.png" class="img-fluid" alt=""></div>
-                        </div>
-                        <div class="row" style="margin-bottom: 5px;">
-                            <div class="col"><img src="../imagenes/map_earth.png" class="img-fluid" alt=""></div>
-                            <div class="col"><img src="../imagenes/map_earth.png" class="img-fluid" alt=""></div>
-                            <div class="col"><img src="../imagenes/map_earth.png" class="img-fluid" alt=""></div>
-                            <div class="col"><img src="../imagenes/map_earth.png" class="img-fluid" alt=""></div>
-                            <div class="col"><img src="../imagenes/map_earth.png" class="img-fluid" alt=""></div>
-                        </div>
-                      </div>
+            <div class="col-3"></div>
+            <div class="col-lg-6">
+                <!--Juego-->
+                <div class="container" id="contenedor_juego">
+                    <div class="row" style="background-color: white;">
+                        <!--Acá va los componentes-->
+                        Nivel: 1 ////////////// Mapa: Earth ////////////// Vida: ♥ ♥ ♥ ////////////// Respuesta:alivio     
                     </div>
-                  </div>
+                    <div class="row">
+                        <div class="col square border border-primary"></div>
+                        <div class="col square border border-primary"></div>
+                        <div class="col square border border-primary"></div>
+                        <div class="col square border border-primary"></div>
+                        <div class="col square border border-primary"></div>
+                        <div class="w-100"></div>
+                        <div class="col square border border-primary"></div>
+                        <div class="col square border border-primary"></div>
+                        <div class="col square border border-primary"></div>
+                        <div class="col square border border-primary"></div>
+                        <div class="col square border border-primary"></div>
+                        <div class="w-100"></div>
+                        <div class="col square border border-primary"></div>
+                        <div class="col square border border-primary"></div>
+                        <div class="col square border border-primary" id="grid_central"></div>
+                        <div class="col square border border-primary"></div>
+                        <div class="col square border border-primary"></div>
+                        <div class="w-100"></div>
+                        <div class="col square border border-primary"></div>
+                        <div class="col square border border-primary"></div>
+                        <div class="col square border border-primary"></div>
+                        <div class="col square border border-primary"></div>
+                        <div class="col square border border-primary"></div>
+                        <div class="w-100"></div>
+                        <div class="col square border border-primary"></div>
+                        <div class="col square border border-primary"></div>
+                        <div class="col square border border-primary"></div>
+                        <div class="col square border border-primary"></div>
+                        <div class="col square border border-primary"></div>
+                    </div>
+                </div>
             </div>
-            <div class="col-3">
-                <!--Acá va el panel-->
+            <div class="col-lg-3">
+                <!--Panel-->
                 <div class="row">
-                    <!--Acá va el profile robot-->
+                    <!--Figura-->
                     <figure class="figura_contenido">
                         <img src="../imagenes/profile_player.jpg" alt="" srcset="">
                         <figcaption>Player</figcaption>
-                    </figure>                 
+                    </figure>
                 </div>
-                <!--Acá va las opciones-->  
                 <div class="row">
-                    <div class="text-center cover-container d-flex p-3 mx-auto flex-column">
-                        <header class="masthead mb-auto"></header>
-                        <main role="main" class="inner-cover">             
-                            <div class="lead p-2 letra_botones">
-                                <button id="butInstrucciones" class="btn btn-info btn-lg">Instrucciones</buttton>
-                            </div>
-                            <div class="lead p-2 letra_botones">
-                                <button type="buttton" class="btn btn-primary btn-lg" id="boton_nuevo_juego">Nuevo Juego</button>
-                            </div>
-                            <div class="lead p-2 letra_botones">
-                                <a href="info.html" class="btn btn-secondary btn-lg" target="="_blank">Acerca de</a>
-                            </div>
-                        </main>   
-                        <footer class="mastfoot mt-auto"></footer>      
+                    <!--Botones-->
+                    <div class="btn-group-vertical">
+                        <button type="button" class="btn btn-info btn-lg" id="butInstrucciones">Instrucciones</button>
+                        <button type="button" class="btn btn-primary btn-lg" id="boton_nuevo_juego">Nuevo Juego</button>
+                        <a href="info.html" class="btn btn-secondary btn-lg">Acerca de</a>
                     </div>
                 </div>
                 <div class="row">
-                    <!--Acá va las direcciones-->
-                    <div class="row">
-                        <div class="col-4">
-
-                        </div>
-                        <div class="col-4">
-                            <button><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
-                            </svg></button>
-                        </div>
-                        <div class="col-4">
-
-                        </div>
+                    <!--Flechas de direcciones-->
+                    <div class="col"></div>
+                    <div class="col">
+                        <button><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-11.5.5a.5.5 0 0 1 0-1h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5z"/>
+                        </svg></button>
                     </div>
-                    <div class="row">
-                        <div class="col-4">
-                            <button><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5.5a.5.5 0 0 0 0-1H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5z"/>
-                            </svg></button>
-                        </div>
-                        <div class="col-4">
-                            
-                        </div>
-                        <div class="col-4">
-                            <button><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-11.5.5a.5.5 0 0 1 0-1h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5z"/>
-                            </svg></button>
-                        </div>
-                    <div class="row">
-                        <div class="col-4">
-
-                        </div>
-                        <div class="col-4">
-                            <button><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
-                            </svg></button>
-                        </div>
-                        <div class="col-4">
-
-                        </div>
+                    <div class="col"></div>
+                    <div class="w-100"></div>
+                    <div class="col">
+                        <button><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-11.5.5a.5.5 0 0 1 0-1h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5z"/>
+                        </svg></button>
                     </div>
+                    <div class="col"></div>
+                    <div class="col">
+                        <button><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-11.5.5a.5.5 0 0 1 0-1h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5z"/>
+                        </svg></button>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col"></div>
+                    <div class="col">
+                        <button><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-11.5.5a.5.5 0 0 1 0-1h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5z"/>
+                        </svg></button>
+                    </div>
+                    <div class="col"></div>
                 </div>
             </div>
+        </div>
         <script src="../scripts/main.js"></script>
     </body>
 </html>

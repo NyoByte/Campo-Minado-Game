@@ -178,23 +178,38 @@ function OnClickInstrucciones(){
     $('#modalInstrucciones').modal('show')
 }
 
+var ventanaJuego = true
+
+var crearBotonJugar = function(){
+    var boton = document.createElement("button")
+    boton.setAttribute("type", "button")
+    boton.setAttribute("class", "btn btn-primary btn-lg")
+    boton.setAttribute("id", "boton_jugar")
+    boton.innerHTML = "Jugar"
+    return boton
+}
+
+var botonNuevoJuegoOnClick = function(evt){
+    if(ventanaJuego == true){
+        var cont_juego = document.querySelector("#contenedor_juego")
+        cont_juego.style.backgroundImage = 'none'
+        document.querySelector("#grid_central").appendChild(crearBotonJugar())
+        ventanaJuego = false
+        evt.target.style.display = "none"
+        document.querySelector("#boton_jugar").addEventListener("click", botonJugarOnClick)
+    }
+}
+
 var botonJugarOnClick = function(){
-    $('.carousel').carousel(1)
-}
-
-var botonNuevoJuegoOnClick = function(){
-    $('.carousel').carousel(0)
-}
-
-function inicializarFuncionesCarousel(){
-    $('.carousel').carousel('pause')
-    document.querySelector("#boton_jugar").addEventListener("click", botonJugarOnClick)
-    document.querySelector("#boton_nuevo_juego").addEventListener("click", botonNuevoJuegoOnClick)
+    document.querySelector("#grid_central").innerHTML = ""
+    document.querySelector("#contenedor_juego").style.backgroundImage = "url('../imagenes/map_earth.png')"
+    ventanaJuego = true
+    document.querySelector("#boton_nuevo_juego").style.display = "block"
 }
 
 var main = function(){
     document.getElementById("butInstrucciones").onclick = OnClickInstrucciones;
-    inicializarFuncionesCarousel()
+    document.querySelector("#boton_nuevo_juego").addEventListener("click", botonNuevoJuegoOnClick)
 }
 
 window.addEventListener("load", main)
