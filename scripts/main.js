@@ -198,6 +198,7 @@ var botonNuevoJuegoOnClick = function(evt){
         ventanaJuego = false
         evt.target.style.display = "none"
         document.querySelector("#boton_jugar").addEventListener("click", botonJugarOnClick)
+        document.querySelector("#componentes_juego").style.display = "none"
     }
 }
 
@@ -208,6 +209,7 @@ var botonJugarOnClick = function(){
     }
     ventanaJuego = true
     document.querySelector("#boton_nuevo_juego").style.display = "block"
+    document.querySelector("#componentes_juego").style.display = "block"
 }
 
 var main = function(){

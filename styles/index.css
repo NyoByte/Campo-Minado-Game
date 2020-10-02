@@ -118,7 +118,7 @@ body{
 }
 
 
-#componentes_juego{
+/*#componentes_juego{
     background-color: rgba(87, 95, 90, 0.829);
     width: 500px;
 	height: 60px;
@@ -128,7 +128,7 @@ body{
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-}
+}*/
 #profile_robot_name{
     font-size: 18px;
 }
