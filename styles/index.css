@@ -1,3 +1,8 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
 body{
     font-family: 'VT323', monospace;
 }
@@ -51,11 +56,33 @@ body{
 /*PARTE DEL MAPA DE JUEGO*/
 .square:before{
     content: "";
-    display: block;
+    display: flex;
     padding-top: 100%;  /* initial ratio of 1:1*/
+	height: 50px;
+	width: 50px;
+	justify-content: center;
+	align-items: center;
 }
 
 #contenedor_juego{
     background-color: gray;
     background-image: url('../imagenes/map_earth.png');
+    height: 300px;
+    width: 500px;
+    flex-wrap: wrap;
+    background-repeat: round;
+    justify-content: space-around;
+    margin: 0;
+}
+
+#componentes_juego{
+    width: 500px;
+	height: 60px;
+    background-color: rgba(87, 95, 90, 0.829);
+    color: white;
+    position: absolute;
+	border-radius: 5px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
 }
