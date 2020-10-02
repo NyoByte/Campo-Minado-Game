@@ -80,7 +80,7 @@
                 </div>
                 <!--Panel Juego-->  
                 <div class="row container col-12">
-                    <div class="container" id="contenedor_juego">
+                    <div class="row" id="contenedor_juego">
                         <div class="row">
                             <div class="col square border border-dark"></div>
                             <div class="col square border border-dark"></div>
@@ -120,55 +120,43 @@
                 </div>
             </div>
             <!--Panel-->
-            <div class="col-md-3 justify-content-center">               
+            <div class="row container col-md-3">               
                 <!--Figura-->
-                <div class="row col-12">  
-                    <figure class="figura_contenido img-fluid">
-                        <img src="../imagenes/profile_player.jpg" alt="" srcset="">
-                        <figcaption id="profile_robot_name">Robot Bender</figcaption>
-                        <img src="../imagenes/heart_100.png" alt="" id="componente_vida">
-                    </figure>
+                <div class="contenedor_panel">
+                    <img src="../imagenes/profile_player.jpg" id="figura_profileP" class="img-fluid" alt="Imagen player">
+                    <img src="../imagenes/heart_100.png" alt="Imagen vida" class="img-fluid">
                 </div>
-                <!--Botones-->
-                <div class="row col-12">
-                    <div class="btn-group-vertical mt-2 mb-2">
-                        <button type="button" class="btn btn-info btn-lg" id="butInstrucciones">Instrucciones</button>
-                        <button type="button" class="btn btn-primary btn-lg" id="boton_nuevo_juego">Nuevo Juego</button>
-                        <a href="info.html" class="btn btn-secondary btn-lg">Acerca de</a>
+                <div class="contenedor_panel">
+                    <div class="btn-group-vertical mt-2 mb-2 btn-group-sm" id="botones_panel">
+                        <button type="button" class="btn btn-info" id="butInstrucciones">Instrucciones</button>
+                        <button type="button" class="btn btn-primary" id="boton_nuevo_juego">Nuevo Juego</button>
+                        <a href="info.html" class="btn btn-secondary">Acerca de</a>
                     </div>
                 </div>
-                <!--Flechas de direcciones-->
-                <div class="row col-12">
-                    <div class="container">       
-                        <div class="row justify-content-center">                                            
-                            <button class="btn btn-default col-4">
-                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <div id="contenedor_flechas">
+                    <button type="button" class="btn btn-dark">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+                        </svg>
+                    </button>
+                    <div class="btn-group" role="group" >
+                        <button type="button" class="btn btn-dark">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5.5a.5.5 0 0 0 0-1H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5z"/>
+                            </svg>
+                        </button>
+                        <button type="button" class="btn btn-dark">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-11.5.5a.5.5 0 0 1 0-1h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5z"/>
-                                </svg>
-                            </button>  
-                        </div>                                                              
-                        <div class="row justify-content-center">                                            
-                            <button class="btn btn-default col-4">
-                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-11.5.5a.5.5 0 0 1 0-1h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5z"/>
-                                </svg>
-                            </button> 
-                            <button class="btn btn-default col-4">
-                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-11.5.5a.5.5 0 0 1 0-1h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5z"/>
-                                </svg>
-                            </button>  
-                        </div>
-                        <div class="row justify-content-center">                                            
-                            <button class="btn btn-default col-4">
-                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-11.5.5a.5.5 0 0 1 0-1h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5z"/>
-                                </svg>
-                            </button>  
-                        </div>  
+                            </svg>
+                        </button>
                     </div>
+                    <button type="button" class="btn btn-dark">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                        </svg>
+                    </button>
                 </div>
-            </div>
         </div>
         <script src="../scripts/main.js"></script>
     </body>

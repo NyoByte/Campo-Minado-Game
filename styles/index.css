@@ -54,31 +54,67 @@ body{
 }
 
 /*PARTE DEL MAPA DE JUEGO*/
-.square:before{
-    content: "";
-    display: flex;
-    padding-top: 100%;  /* initial ratio of 1:1*/
-	height: 50px;
-	width: 50px;
-	justify-content: center;
-	align-items: center;
+
+/*Mobile First*/
+.square{
+    height: 48px;
+    width: 48px;
+    background-image: url('../imagenes/map_earth.png');
 }
 
 #contenedor_juego{
     background-color: gray;
-    background-image: url('../imagenes/map_earth.png');
-    height: 300px;
-    width: 500px;
+    background-color: dimgrey;
     flex-wrap: wrap;
     background-repeat: round;
     justify-content: space-around;
     margin: 0;
 }
 
+.contenedor_panel{
+    height: 150px;
+    width: 90px;
+    text-align: center;
+}
+
+#contenedor_flechas{
+    height: 150px;
+    width: 90px;
+    text-align: center;
+}
+
+/*Para tablet*/
+@media only screen and (min-width: 768px){
+    .square{
+        height: 80px;
+        width: 80px;
+    }
+    .contenedor_panel{
+        width: 100%;
+    }
+    #botones_panel{
+        width: 150px;
+        height: 100px;
+    }
+}
+
+/*Para desktop*/
+@media only screen and (min-width: 1024px){
+    .square{
+        height: 100px;
+        width: 100px;
+    }
+    #botones_panel{
+        width: 200px;
+        height: 150px;
+    }
+}
+
+
 #componentes_juego{
+    background-color: rgba(87, 95, 90, 0.829);
     width: 500px;
 	height: 60px;
-    background-color: rgba(87, 95, 90, 0.829);
     color: white;
     position: absolute;
 	border-radius: 5px;
