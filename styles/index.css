@@ -63,7 +63,6 @@ body{
 }
 
 #contenedor_juego{
-    background-color: gray;
     background-color: dimgrey;
     flex-wrap: wrap;
     background-repeat: round;
@@ -81,6 +80,14 @@ body{
     height: 150px;
     width: 90px;
     text-align: center;
+}
+
+/* 640px/telefono horizontal */
+@media only screen and (min-width:640px){
+    .square{
+        height: 50px;
+        width: 50px;
+    }
 }
 
 /*Para tablet*/

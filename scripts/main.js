@@ -191,8 +191,9 @@ var crearBotonJugar = function(){
 
 var botonNuevoJuegoOnClick = function(evt){
     if(ventanaJuego == true){
-        var cont_juego = document.querySelector("#contenedor_juego")
-        cont_juego.style.backgroundImage = 'none'
+        for (cuadrado of document.getElementsByClassName("square")){
+            cuadrado.style.backgroundImage = "none"
+        }
         document.querySelector("#grid_central").appendChild(crearBotonJugar())
         ventanaJuego = false
         evt.target.style.display = "none"
@@ -202,7 +203,9 @@ var botonNuevoJuegoOnClick = function(evt){
 
 var botonJugarOnClick = function(){
     document.querySelector("#grid_central").innerHTML = ""
-    document.querySelector("#contenedor_juego").style.backgroundImage = "url('../imagenes/map_earth.png')"
+    for(cuadrado of document.getElementsByClassName("square")){
+        cuadrado.style.backgroundImage = "url('../imagenes/map_earth.png')"
+    }
     ventanaJuego = true
     document.querySelector("#boton_nuevo_juego").style.display = "block"
 }
