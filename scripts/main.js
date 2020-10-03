@@ -135,44 +135,145 @@ mapaMinas = `
 mapaActual = mapaInicial
 console.log(mapaActual)
 mapaPrevio = mapaActual
-mapaActual = Mover("up", mapaActual, mapaMinas)
-console.log(mapaActual)
-console.log(ObtenerResultado(mapaActual, mapaPrevio))
-mapaPrevio = mapaActual
-mapaActual = Mover("up", mapaActual, mapaMinas)
-console.log(mapaActual)
-console.log(ObtenerResultado(mapaActual, mapaPrevio))
-mapaPrevio = mapaActual
-mapaActual = Mover("right", mapaActual, mapaMinas)
-console.log(mapaActual)
-console.log(ObtenerResultado(mapaActual, mapaPrevio))
-mapaPrevio = mapaActual
-mapaActual = Mover("up", mapaActual, mapaMinas)
-console.log(mapaActual)
-console.log(ObtenerResultado(mapaActual, mapaPrevio))
-mapaPrevio = mapaActual
-mapaActual = Mover("up", mapaActual, mapaMinas)
-console.log(mapaActual)
-console.log(ObtenerResultado(mapaActual, mapaPrevio))
-mapaPrevio = mapaActual
-mapaActual = Mover("right", mapaActual, mapaMinas)
-console.log(mapaActual)
-console.log(ObtenerResultado(mapaActual, mapaPrevio))
-mapaPrevio = mapaActual
-mapaActual = Mover("right", mapaActual, mapaMinas)
-console.log(mapaActual)
-console.log(ObtenerResultado(mapaActual, mapaPrevio))
-mapaPrevio = mapaActual
-mapaActual = Mover("right", mapaActual, mapaMinas)
-console.log(mapaActual)
-console.log(ObtenerResultado(mapaActual, mapaPrevio))
-mapaPrevio = mapaActual
-mapaActual = Mover("right", mapaActual, mapaMinas)
-console.log(mapaActual)
-console.log(ObtenerResultado(mapaActual, mapaPrevio))
-// 
-console.log(ObtenerMatrixDeMapa(mapaActual))
+/*console.log(mapaMinas)
+mapaActual= Mover("up",mapaActual,mapaMinas)
 
+console.log(ObtenerResultado(mapaActual, mapaPrevio))
+console.log(mapaPrevio)
+console.log(mapaActual)
+// 
+console.log(ObtenerMatrixDeMapa(mapaActual))*/
+
+//==========CODIGO==========
+function Posición(matriz){
+    var posActual = new Object()
+    posActual.x=4
+    posActual.y=0
+    for(var i=0;i<matriz.length;i++){
+        for(var j=0;j<matriz.length;j++){
+            if(matriz[i][j]=="+"){
+                posActual.x=j
+                posActual.y=i
+                return posActual
+            }
+        }
+    }    
+    return posActual
+}
+
+function OnClickButUp(){
+    mapaActual = Mover("up",mapaActual,mapaMinas)
+    Actualizar()
+}
+
+function OnClickButDown(){
+    mapaActual = Mover("down",mapaActual,mapaMinas)
+    Actualizar()
+}
+
+function OnClickButLeft(){
+    mapaActual = Mover("left",mapaActual,mapaMinas)
+    Actualizar()
+}
+
+function OnClickButRight(){
+    mapaActual = Mover("right",mapaActual,mapaMinas)
+    Actualizar()
+}
+
+Vidas = 4
+function PerderVida(){
+    var aux = document.getElementById("panel_profile")
+    var coso = aux.lastElementChild
+    Vidas--
+    switch(Vidas){
+        case 3:
+            coso.setAttribute("src","../imagenes/heart_75.png")
+            break;
+        case 2:
+            coso.setAttribute("src","../imagenes/heart_50.png")
+            break;
+        case 1:
+            coso.setAttribute("src","../imagenes/heart_25.png")
+            break;
+        case 0:
+            coso.setAttribute("src","../imagenes/heart_0.png")
+            AccionPerder()
+            break;
+    }
+}
+
+function AccionPerder(){
+    //Mensaje de que perdió, hacer que se destruya el robot
+    // ...
+    //Reiniciar juego
+    location.href="main.html";
+
+}
+
+function AñadirMina(posX,posY){
+    var aux = document.getElementById("pos-x"+posX+"-y"+posY)
+    var newImg = document.createElement("img")
+    newImg.setAttribute("src","../imagenes/bomba_1.jpg")
+    newImg.setAttribute("class", "img-fluid")
+    aux.appendChild(newImg)
+}
+
+function BorrarMinas(matriz){
+    for(var i=0;i<matriz.length;i++){
+        for(var j=0;j<matriz.length;j++){
+            if(matriz[i][j]=="$"){
+                var aux = document.getElementById("pos-x"+j+"-y"+i)
+                if(aux.firstElementChild!=null){
+                    aux.removeChild(aux.firstElementChild)
+                }          
+            }
+        }
+    }
+}
+
+function BuscarMinas(matriz){
+    BorrarMinas(matriz)
+    for(var i=0;i<matriz.length;i++){
+        for(var j=0;j<matriz.length;j++){
+            if(matriz[i][j]=="$"){
+                AñadirMina(j,i)
+            }
+        }
+    }
+}
+
+function BorrarRobot(posicion){
+    var aux = document.getElementById("pos-x"+posicion.x+"-y"+posicion.y)
+    aux.removeChild(aux.firstElementChild)
+}
+
+function AñadirRobot(posicion){
+    var aux = document.getElementById("pos-x"+posicion.x+"-y"+posicion.y)
+    var newImg = document.createElement("img")
+    newImg.setAttribute("src","../imagenes/robot_pos.png")
+    newImg.setAttribute("class", "img-fluid")
+    aux.appendChild(newImg)
+}
+
+function Actualizar(){
+    var resp = (ObtenerResultado(mapaActual,mapaPrevio))
+    console.log(resp)
+    var matrizPrevia = ObtenerMatrixDeMapa(mapaPrevio)
+    var posPrevia = Posición(matrizPrevia)
+    mapaPrevio = mapaActual
+    var matrizActual = ObtenerMatrixDeMapa(mapaActual)
+    var posActual = Posición(matrizActual)
+    BorrarRobot(posPrevia)
+    AñadirRobot(posActual)
+    if(resp=="mina"){
+        BuscarMinas(ObtenerMatrixDeMapa(mapaPrevio))
+        PerderVida()
+    }
+    if(resp=="fin"){
+        alert("Felicidades")
+    }
+}
 
 function OnClickInstrucciones(){
     $('#modalInstrucciones').modal('show')
@@ -191,29 +292,28 @@ var crearBotonJugar = function(){
 
 var botonNuevoJuegoOnClick = function(evt){
     if(ventanaJuego == true){
-        for (cuadrado of document.getElementsByClassName("square")){
-            cuadrado.style.backgroundImage = "none"
-        }
-        document.querySelector("#grid_central").appendChild(crearBotonJugar())
+        var cont_juego = document.querySelector("#contenedor_juego")
+        cont_juego.style.backgroundImage = 'none'
+        document.querySelector("#pos-x2-x2").appendChild(crearBotonJugar())
         ventanaJuego = false
         evt.target.style.display = "none"
         document.querySelector("#boton_jugar").addEventListener("click", botonJugarOnClick)
-        document.querySelector("#componentes_juego").style.display = "none"
     }
 }
 
 var botonJugarOnClick = function(){
-    document.querySelector("#grid_central").innerHTML = ""
-    for(cuadrado of document.getElementsByClassName("square")){
-        cuadrado.style.backgroundImage = "url('../imagenes/map_earth.png')"
-    }
+    document.querySelector("#pos-x2-x2").innerHTML = ""
+    document.querySelector("#contenedor_juego").style.backgroundImage = "url('../imagenes/map_earth.png')"
     ventanaJuego = true
     document.querySelector("#boton_nuevo_juego").style.display = "block"
-    document.querySelector("#componentes_juego").style.display = "block"
 }
 
 var main = function(){
     document.getElementById("butInstrucciones").onclick = OnClickInstrucciones;
+    document.getElementById("butUp").onclick =OnClickButUp;
+    document.getElementById("butDown").onclick =OnClickButDown;
+    document.getElementById("butLeft").onclick =OnClickButLeft;
+    document.getElementById("butRight").onclick =OnClickButRight;
     document.querySelector("#boton_nuevo_juego").addEventListener("click", botonNuevoJuegoOnClick)
 }
 

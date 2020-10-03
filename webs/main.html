@@ -82,41 +82,41 @@
                 <div class="row container col-12">
                     <div class="row" id="contenedor_juego">
                         <div class="row">
-                            <div class="col square border border-dark"></div>
-                            <div class="col square border border-dark"></div>
-                            <div class="col square border border-dark"></div>
-                            <div class="col square border border-dark"></div>
-                            <div class="col square border border-dark"></div>
+                            <div class="col square border border-dark" id="pos-x0-y0"></div>
+                            <div class="col square border border-dark" id="pos-x1-y0"></div>
+                            <div class="col square border border-dark" id="pos-x2-y0"></div>
+                            <div class="col square border border-dark" id="pos-x3-y0"></div>
+                            <div class="col square border border-dark" id="pos-x4-y0"></div>
                         </div>
                         <div class="row">
-                            <div class="col square border border-dark"></div>
-                            <div class="col square border border-dark"></div>
-                            <div class="col square border border-dark"></div>
-                            <div class="col square border border-dark"></div>
-                            <div class="col square border border-dark"></div>
+                            <div class="col square border border-dark" id="pos-x0-y1"></div>
+                            <div class="col square border border-dark" id="pos-x1-y1"></div>
+                            <div class="col square border border-dark" id="pos-x2-y1"></div>
+                            <div class="col square border border-dark" id="pos-x3-y1"></div>
+                            <div class="col square border border-dark" id="pos-x4-y1"></div>
                         </div>
                         <div class="row">
-                            <div class="col square border border-dark"></div>
-                            <div class="col square border border-dark"></div>
-                            <div class="col square border border-dark" id="grid_central"></div>
-                            <div class="col square border border-dark"></div>
-                            <div class="col square border border-dark"></div>
+                            <div class="col square border border-dark" id="pos-x0-y2"></div>
+                            <div class="col square border border-dark" id="pos-x1-y2"></div>
+                            <div class="col square border border-dark" id="pos-x2-y2"></div>
+                            <div class="col square border border-dark" id="pos-x3-y2"></div>
+                            <div class="col square border border-dark" id="pos-x4-y2"></div>
                         </div>
                         <div class="row">
-                            <div class="col square border border-dark"></div>
-                            <div class="col square border border-dark"></div>
-                            <div class="col square border border-dark"></div>
-                            <div class="col square border border-dark"></div>
-                            <div class="col square border border-dark"></div>
+                            <div class="col square border border-dark" id="pos-x0-y3"></div>
+                            <div class="col square border border-dark" id="pos-x1-y3"></div>
+                            <div class="col square border border-dark" id="pos-x2-y3"></div>
+                            <div class="col square border border-dark" id="pos-x3-y3"></div>
+                            <div class="col square border border-dark" id="pos-x4-y3"></div>
                         </div>
                         <div class="row">
-                            <div class="col square border border-dark">
-                                <img src="../imagenes/robot_right.png" alt="Sprite robot right faced" class="img-fluid">
+                            <div class="col square border border-dark" id="pos-x0-y4">
+                                <img src="../imagenes/robot_pos.png" alt="Sprite robot right faced" class="img-fluid">
                             </div>
-                            <div class="col square border border-dark"></div>
-                            <div class="col square border border-dark"></div>
-                            <div class="col square border border-dark"></div>
-                            <div class="col square border border-dark"></div>
+                            <div class="col square border border-dark" id="pos-x1-y4"></div>
+                            <div class="col square border border-dark" id="pos-x2-y4"></div>
+                            <div class="col square border border-dark" id="pos-x3-y4"></div>
+                            <div class="col square border border-dark" id="pos-x4-y4"></div>
                         </div>
                     </div>
                 </div>
@@ -124,9 +124,9 @@
             <!--Panel-->
             <div class="row container col-md-3">               
                 <!--Figura-->
-                <div class="contenedor_panel">
+                <div class="contenedor_panel" id="panel_profile">
                     <img src="../imagenes/profile_player.jpg" id="figura_profileP" class="img-fluid" alt="Imagen player">
-                    <img src="../imagenes/heart_100.png" alt="Imagen vida" class="img-fluid">
+                    <img src="../imagenes/heart_100.png" id="barraVida" alt="Imagen vida" class="img-fluid">
                 </div>
                 <div class="contenedor_panel">
                     <div class="btn-group-vertical mt-2 mb-2 btn-group-sm" id="botones_panel">
@@ -136,24 +136,24 @@
                     </div>
                 </div>
                 <div id="contenedor_flechas">
-                    <button type="button" class="btn btn-dark">
+                    <button type="button" class="btn btn-dark" id="butUp">
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
                         </svg>
                     </button>
                     <div class="btn-group" role="group" >
-                        <button type="button" class="btn btn-dark">
+                        <button type="button" class="btn btn-dark" id="butLeft">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5.5a.5.5 0 0 0 0-1H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5z"/>
                             </svg>
                         </button>
-                        <button type="button" class="btn btn-dark">
+                        <button type="button" class="btn btn-dark" id="butRight">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-11.5.5a.5.5 0 0 1 0-1h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5z"/>
                             </svg>
                         </button>
                     </div>
-                    <button type="button" class="btn btn-dark">
+                    <button type="button" class="btn btn-dark" id="butDown">
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
                         </svg>
