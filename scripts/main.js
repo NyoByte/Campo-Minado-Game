@@ -161,24 +161,52 @@ function Posición(matriz){
     return posActual
 }
 
-function OnClickButUp(){
-    mapaActual = Mover("up",mapaActual,mapaMinas)
-    Actualizar()
+function cuentaRegresiva(){
+    var cont = 3
+    var comp_resultado = document.querySelector("#componente_resultado").firstElementChild
+    comp_resultado.color = 'white'
+    comp_resultado.innerHTML = cont
+    interval = setInterval(function(){
+        if(cont<=0){
+            clearInterval(self)
+        }else{
+            comp_resultado.innerHTML = --cont
+        }
+    },1000)
 }
 
+function OnClickButUp(){
+    cuentaRegresiva()
+    setTimeout(function(){
+        mapaActual = Mover("up",mapaActual,mapaMinas)
+        Actualizar()
+    },3000)
+}
+
+
+
 function OnClickButDown(){
-    mapaActual = Mover("down",mapaActual,mapaMinas)
-    Actualizar()
+    cuentaRegresiva()
+    setTimeout(function(){
+        mapaActual = Mover("down",mapaActual,mapaMinas)
+        Actualizar()
+    },3000)
 }
 
 function OnClickButLeft(){
-    mapaActual = Mover("left",mapaActual,mapaMinas)
-    Actualizar()
+    cuentaRegresiva()
+    setTimeout(function(){
+        mapaActual = Mover("left",mapaActual,mapaMinas)
+        Actualizar()
+    },3000)
 }
 
 function OnClickButRight(){
-    mapaActual = Mover("right",mapaActual,mapaMinas)
-    Actualizar()
+    cuentaRegresiva()
+    setTimeout(function(){
+        mapaActual = Mover("right",mapaActual,mapaMinas)
+        Actualizar()
+    },3000)
 }
 
 Vidas = 4
@@ -256,9 +284,21 @@ function AñadirRobot(posicion){
     aux.appendChild(newImg)
 }
 
+var mensajeResultado = function(result){
+    var comp_res = document.querySelector("#componente_resultado").firstElementChild
+    if(result == "sin mina"){
+        comp_res.innerHTML = "ALIVIO"
+        comp_res.style.color = "royalblue"
+    }else if(result == "mina"){
+        comp_res.innerHTML = "EXPLOSIÓN"
+        comp_res.style.color = "orangered"
+    }
+}
+
 function Actualizar(){
     var resp = (ObtenerResultado(mapaActual,mapaPrevio))
     console.log(resp)
+    mensajeResultado(resp)
     var matrizPrevia = ObtenerMatrixDeMapa(mapaPrevio)
     var posPrevia = Posición(matrizPrevia)
     mapaPrevio = mapaActual
@@ -290,11 +330,25 @@ var crearBotonJugar = function(){
     return boton
 }
 
+var reiniciarJuego = function(){
+    mapaActual = mapaInicial
+    mapaPrevio = mapaActual
+    for(square of document.getElementsByClassName("square")){
+        square.innerHTML = ""
+    }
+    Vidas = 4
+    document.querySelector("#barraVida").setAttribute("src", "../imagenes/heart_100.png")
+}
+
 var botonNuevoJuegoOnClick = function(evt){
     if(ventanaJuego == true){
-        var cont_juego = document.querySelector("#contenedor_juego")
-        cont_juego.style.backgroundImage = 'none'
-        document.querySelector("#pos-x2-x2").appendChild(crearBotonJugar())
+        reiniciarJuego()
+        for(square of document.getElementsByClassName("square")){
+            square.style.backgroundImage = "none"
+        }
+        document.querySelector("#componentes_juego").style.display = "none"
+        document.querySelector("#barraVida").style.display = "none"
+        document.querySelector("#pos-x2-y2").appendChild(crearBotonJugar())
         ventanaJuego = false
         evt.target.style.display = "none"
         document.querySelector("#boton_jugar").addEventListener("click", botonJugarOnClick)
@@ -302,10 +356,28 @@ var botonNuevoJuegoOnClick = function(evt){
 }
 
 var botonJugarOnClick = function(){
-    document.querySelector("#pos-x2-x2").innerHTML = ""
-    document.querySelector("#contenedor_juego").style.backgroundImage = "url('../imagenes/map_earth.png')"
+    document.querySelector("#pos-x2-y2").innerHTML = ""
+    for(square of document.getElementsByClassName("square")){
+        square.style.backgroundImage = "url('../imagenes/map_earth.png')"
+    }
+    document.querySelector("#componentes_juego").style.display = "block"
     ventanaJuego = true
-    document.querySelector("#boton_nuevo_juego").style.display = "block"
+    document.querySelector("#boton_nuevo_juego").style.display = "inline"
+    document.querySelector("#barraVida").style.display = "inline"
+    var robot = document.createElement("img")
+    robot.setAttribute("src", "../imagenes/robot_pos.png")
+    robot.setAttribute("class", "img-fluid")
+    document.querySelector("#pos-x0-y4").appendChild(robot)
+}
+
+var flechasTecladoPressed = function(evt){
+    console.log(evt.key)
+    switch(evt.keyCode){
+        case 37: OnClickButLeft(); break;
+        case 38: OnClickButUp(); break;
+        case 39:  OnClickButRight(); break;
+        case 40:  OnClickButDown(); break;
+    }
 }
 
 var main = function(){
@@ -315,6 +387,7 @@ var main = function(){
     document.getElementById("butLeft").onclick =OnClickButLeft;
     document.getElementById("butRight").onclick =OnClickButRight;
     document.querySelector("#boton_nuevo_juego").addEventListener("click", botonNuevoJuegoOnClick)
+    document.addEventListener("keyup", flechasTecladoPressed)
 }
 
 window.addEventListener("load", main)
