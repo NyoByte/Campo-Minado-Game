@@ -174,19 +174,45 @@ function cuentaRegresiva(){
         }
     },1000)
 }
+estaBoxDirecciones=true
+function OcultarDirecciones(){
+    boxDirecciones = document.querySelector("#contenedor_flechas")
+    boxDirecciones.className = "oculto"
+    estaBoxDirecciones=false
+}
+function MostrarDirecciones(){
+    boxDirecciones = document.querySelector("#contenedor_flechas")
+    boxDirecciones.className = "visible"
+    estaBoxDirecciones=true
+}
 
 function OnClickButUp(){
     cuentaRegresiva()
+    posicion = Posición(ObtenerMatrixDeMapa(mapaPrevio))
+    var aux = document.getElementById("pos-x"+posicion.x+"-y"+posicion.y)
+    aux.removeChild(aux.firstElementChild)
+    var newImg = document.createElement("img")
+    newImg.setAttribute("src","../imagenes/robot_up_mov.png")
+    newImg.setAttribute("class", "img-fluid")
+    aux.appendChild(newImg)
+    OcultarDirecciones()
     setTimeout(function(){
         mapaActual = Mover("up",mapaActual,mapaMinas)
         Actualizar()
     },3000)
+    
 }
-
-
 
 function OnClickButDown(){
     cuentaRegresiva()
+    posicion = Posición(ObtenerMatrixDeMapa(mapaPrevio))
+    var aux = document.getElementById("pos-x"+posicion.x+"-y"+posicion.y)
+    aux.removeChild(aux.firstElementChild)
+    var newImg = document.createElement("img")
+    newImg.setAttribute("src","../imagenes/robot_down_mov.png")
+    newImg.setAttribute("class", "img-fluid")
+    aux.appendChild(newImg)
+    OcultarDirecciones()
     setTimeout(function(){
         mapaActual = Mover("down",mapaActual,mapaMinas)
         Actualizar()
@@ -195,6 +221,14 @@ function OnClickButDown(){
 
 function OnClickButLeft(){
     cuentaRegresiva()
+    posicion = Posición(ObtenerMatrixDeMapa(mapaPrevio))
+    var aux = document.getElementById("pos-x"+posicion.x+"-y"+posicion.y)
+    aux.removeChild(aux.firstElementChild)
+    var newImg = document.createElement("img")
+    newImg.setAttribute("src","../imagenes/robot_left_mov.png")
+    newImg.setAttribute("class", "img-fluid")
+    aux.appendChild(newImg)
+    OcultarDirecciones()
     setTimeout(function(){
         mapaActual = Mover("left",mapaActual,mapaMinas)
         Actualizar()
@@ -203,6 +237,14 @@ function OnClickButLeft(){
 
 function OnClickButRight(){
     cuentaRegresiva()
+    posicion = Posición(ObtenerMatrixDeMapa(mapaPrevio))
+    var aux = document.getElementById("pos-x"+posicion.x+"-y"+posicion.y)
+    aux.removeChild(aux.firstElementChild)
+    var newImg = document.createElement("img")
+    newImg.setAttribute("src","../imagenes/robot_right_mov.png")
+    newImg.setAttribute("class", "img-fluid")
+    aux.appendChild(newImg)
+    OcultarDirecciones()
     setTimeout(function(){
         mapaActual = Mover("right",mapaActual,mapaMinas)
         Actualizar()
@@ -211,6 +253,7 @@ function OnClickButRight(){
 
 Vidas = 4
 function PerderVida(){
+    MostrarDirecciones()
     var aux = document.getElementById("panel_profile")
     var coso = aux.lastElementChild
     Vidas--
@@ -232,11 +275,20 @@ function PerderVida(){
 }
 
 function AccionPerder(){
+    OcultarDirecciones()
     //Mensaje de que perdió, hacer que se destruya el robot
-    // ...
+    var comp_res = document.querySelector("#componente_resultado").firstElementChild
+    comp_res.innerHTML = "SE MURIÓ"
+    comp_res.color = "orangered"
     //Reiniciar juego
-    location.href="main.html";
+    setTimeout(function(){
+        location.href="main.html"
+    },5000)
 
+}
+
+function AccionGanar(){
+    OcultarDirecciones()
 }
 
 function AñadirMina(posX,posY){
@@ -296,22 +348,23 @@ var mensajeResultado = function(result){
 }
 
 function Actualizar(){
-    var resp = (ObtenerResultado(mapaActual,mapaPrevio))
-    console.log(resp)
-    mensajeResultado(resp)
-    var matrizPrevia = ObtenerMatrixDeMapa(mapaPrevio)
-    var posPrevia = Posición(matrizPrevia)
-    mapaPrevio = mapaActual
-    var matrizActual = ObtenerMatrixDeMapa(mapaActual)
-    var posActual = Posición(matrizActual)
-    BorrarRobot(posPrevia)
-    AñadirRobot(posActual)
+    var resp = (ObtenerResultado(mapaActual,mapaPrevio));
+    console.log(resp);
+    mensajeResultado(resp);
+    var matrizPrevia = ObtenerMatrixDeMapa(mapaPrevio);
+    var posPrevia = Posición(matrizPrevia);
+    mapaPrevio = mapaActual;
+    var matrizActual = ObtenerMatrixDeMapa(mapaActual);
+    var posActual = Posición(matrizActual);
+    BorrarRobot(posPrevia);
+    AñadirRobot(posActual);
     if(resp=="mina"){
-        BuscarMinas(ObtenerMatrixDeMapa(mapaPrevio))
-        PerderVida()
-    }
-    if(resp=="fin"){
-        alert("Felicidades")
+        BuscarMinas(ObtenerMatrixDeMapa(mapaPrevio));
+        PerderVida();
+    }else if(resp=="fin"){
+        AccionGanar();
+    }else{
+        MostrarDirecciones()
     }
 }
 
@@ -372,11 +425,13 @@ var botonJugarOnClick = function(){
 
 var flechasTecladoPressed = function(evt){
     console.log(evt.key)
-    switch(evt.keyCode){
-        case 37: OnClickButLeft(); break;
-        case 38: OnClickButUp(); break;
-        case 39:  OnClickButRight(); break;
-        case 40:  OnClickButDown(); break;
+    if(estaBoxDirecciones==true){
+        switch(evt.keyCode){
+            case 37: OnClickButLeft(); break;
+            case 38: OnClickButUp(); break;
+            case 39:  OnClickButRight(); break;
+            case 40:  OnClickButDown(); break;
+        }
     }
 }
 
