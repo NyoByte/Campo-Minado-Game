@@ -62,6 +62,10 @@ body{
     background-image: url('../imagenes/map_earth.png');
 }
 
+.fondo_index{
+    background-image: url('../imagenes/fondo.png');
+}
+
 #contenedor_juego{
     background-color: dimgrey;
     flex-wrap: wrap;
