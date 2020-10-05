@@ -294,7 +294,7 @@ function AccionGanar(){
 function AñadirMina(posX,posY){
     var aux = document.getElementById("pos-x"+posX+"-y"+posY)
     var newImg = document.createElement("img")
-    newImg.setAttribute("src","../imagenes/bomba_1.jpg")
+    newImg.setAttribute("src","../imagenes/bomba_2.png")
     newImg.setAttribute("class", "img-fluid")
     aux.appendChild(newImg)
 }
