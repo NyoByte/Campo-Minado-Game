@@ -278,9 +278,10 @@ function AccionPerder(){
     OcultarDirecciones()
     //Mensaje de que perdió, hacer que se destruya el robot
     var comp_res = document.querySelector("#componente_resultado").firstElementChild
-    comp_res.innerHTML = "SE MURIÓ"
+    comp_res.innerHTML = "DESTRUIDO"
     comp_res.color = "orangered"
     //Reiniciar juego
+    alert("Perdiste")
     setTimeout(function(){
         location.href="main.html"
     },5000)
@@ -289,6 +290,7 @@ function AccionPerder(){
 
 function AccionGanar(){
     OcultarDirecciones()
+    alert("Ganaste")
 }
 
 function AñadirMina(posX,posY){
