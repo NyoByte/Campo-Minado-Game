@@ -1,99 +1,115 @@
 <html>
-    <head>
-        <title>Juego Campo Minado</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--Bootstrap-->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-        <!--CSS-->
-        <link rel="stylesheet" href="../styles/index.css">
-        <!--Google fonts-->
-        <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-        <!--JS de Bootstrap-->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    </head>
-    <body class="text-center">
-        <!--Ventana modal de bienvenida-->
-        <div class="modal fade" id="modalBienvenida" role="dialog">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Bienvenido al juego</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span> <!--es la X-->
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <img src="../imagenes/giphy.gif" class="img-fluid" alt="Imagen responsive">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success" data-dismiss="modal">Entrar</button>
-                    </div>
+
+<head>
+    <title>Menú Principal</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!--CSS-->
+    <link rel="stylesheet" href="../styles/index.css">
+    <!--Google fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <!--JS de Bootstrap-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="text-center">
+    <!--Ventana modal de bienvenida-->
+    <div class="modal fade" id="modalBienvenida" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Bienvenido al juego</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        <!--es la X-->
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="../imagenes/giphy.gif" class="img-fluid" alt="Imagen responsive">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-block btn-success" data-dismiss="modal">Entrar</button>
                 </div>
             </div>
         </div>
-        <!--Fin ventana modal-->
-        <!--Ventana modal de Instrucciones-->
-        <div class="modal fade letra_instrucciones" id="modalInstrucciones" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Instrucciones:</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span> <!--es la X-->
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>
-                            El terreno ha sido minado con explosivos por un ataque terrorista
-                            y hay un único sobreviviente. Tu misión es controlar al robot para
-                            que llegue al sobreviviente y lo pueda rescatar. El robot solamente
-                            puede soportar 3 explosiones, es decir, queda totalmente destruido
-                            en la 4ta detonación. Si ese fuere el caso, se podrá enviar un robot nuevo.
-                        </p>
-                        <p>
-                            Reglas:</br>
-                            1. Aquí va la primera regla del juego</br>
-                            2. Aquí va la segunda regla del juego</br>
-                            3. Aquí va la tercera regla del juego</br>
-                            4. Aquí va la cuarta regla del juego</br>
-                            5. Aquí va la quinta regla del juego</br>
-                            6. Aquí va la sexta regla del juego</br>
-                            7. Aquí va la séptima regla del juego</br>
-                            8. Aquí va la octava regla del juego</br>
-                            9. Aquí va la novena regla del juego</br>
-                            10. Aquí va la décima regla del juego</br>
-                        </p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
-                    </div>
+    </div>
+    <!--Fin ventana modal-->
+    <!--Ventana modal de Instrucciones-->
+    <div class="modal fade letra_instrucciones" id="modalInstrucciones" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Instrucciones:</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        El terreno ha sido minado con explosivos por un ataque terrorista
+                        y hay un único sobreviviente. Tu misión es controlar al robot para
+                        que llegue al sobreviviente y lo pueda rescatar. El robot solamente
+                        puede soportar 3 explosiones, es decir, queda totalmente destruido
+                        en la 4ta detonación. Si ese fuere el caso, se podrá enviar un robot nuevo.
+                    </p>
+                    <p>
+                        Reglas:</br>
+                        1. Aquí va la primera regla del juego</br>
+                        2. Aquí va la segunda regla del juego</br>
+                        3. Aquí va la tercera regla del juego</br>
+                        4. Aquí va la cuarta regla del juego</br>
+                        5. Aquí va la quinta regla del juego</br>
+                        6. Aquí va la sexta regla del juego</br>
+                        7. Aquí va la séptima regla del juego</br>
+                        8. Aquí va la octava regla del juego</br>
+                        9. Aquí va la novena regla del juego</br>
+                        10. Aquí va la décima regla del juego</br>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
                 </div>
             </div>
         </div>
-        <!--Fin ventana modal-->
-        <div class="cover-container d-flex h-100 p-3 mx-auto flex-column fondo_index">
-            <header class="masthead mb-auto"> </header>
-            <main role="main" class="inner-cover col-6 p-0 align-self-center border border-dark">
-                <nav class="navbar navbar-expand-sm text-white bg-dark mb-1 justify-content-center">
-                    <div>
-                        <h1 class="cover-heading navbar-nav" id="titulo_principal">Campo Minado Game</h1>
+    </div>
+    <!--Fin ventana modal-->
+    <!--Main del menú-->
+    <div class="cover-container d-flex flex-column h-100 p-3 mx-auto fondo_index">
+        <header class="masthead mb-auto"> </header>
+        <main role="main" class="inner-cover p-0 align-self-center">
+            <div class="card border border-dark">
+                <div class="card-body p-0">
+                    <div class="card-tittle">
+                        <nav class="navbar navbar-expand-sm text-white bg-dark p-0 justify-content-center" id="titulo_principal">Campo Minado Game</nav>
                     </div>
-                </nav>
-                <div class="lead p-2 letra_botones">
-                    <button id="butInstrucciones" class="btn btn-info btn-lg">Instrucciones</buttton>
+                    <div class="card-text">
+                        <div class="lead p-2">
+                            <button id="butInstrucciones" class="btn btn-info btn-lg menu_opciones">Instrucciones</buttton>
+                        </div>
+                        <div class="lead p-2">
+                            <a href="./main.html" class="btn btn-primary btn-lg menu_opciones">Jugar</a>
+                        </div>
+                        <div class="lead p-2">
+                            <a href="./info.html" class="btn btn-secondary btn-lg menu_opciones">Acerca de</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="lead p-2 letra_botones">
-                    <a href="./main.html" class="btn btn-primary btn-lg">Jugar</a>
-                </div>
-                <div class="lead p-2 letra_botones">
-                    <a href="./info.html" class="btn btn-secondary btn-lg">Acerca de</a>
-                </div>
-           </main>
-           <footer class="mastfoot mt-auto"></footer>
-        </div>
-        <script src="../scripts/menu.js"></script>
-    </body>
+            </div>
+        </main>
+        <footer class="mastfoot mt-auto"></footer>
+    </div>
+    <script src="../scripts/menu.js"></script>
+</body>
+
 </html>

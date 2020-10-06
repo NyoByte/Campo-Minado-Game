@@ -1,61 +1,53 @@
-*{
-    padding: 0;
-    margin: 0;
-}
-
 body{
     font-family: 'VT323', monospace;
-}
-
-/*PARTE DE MAIN DEL JUEGO*/
-.letra_botones{
-    font-family: 'VT323', monospace;
-}
-.figura_contenido{
-    text-align: center;
-    font-family: 'VT323', monospace;
-    font-size: 22px;
 }
 
 /*PARTE DE INTRUCCIONES*/
 .letra_instrucciones{
     text-align: center;
-    font-family: 'VT323', monospace;
     text-align: left;
 }
 
 /*PARTE DE MENÚ PRINCIPAL*/
 #titulo_principal{
-    font-family: 'VT323', monospace;
-    font-size: 60px;
-}
-.titulo{
     font-size: 45px;
+    line-height: 1;
 }
 
 /*PARTE DE ACERCA DE*/
-.info_letra{
-    font-family: 'VT323', monospace;
-    font-size: 18px;
+.fondo_info{
+    background-image: url('../imagenes/moon1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+#contexto{
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    text-align: justify;
+    line-height: 1.2;
 }
 .info_titulo{
-    font-size: 45px;
+    font-size: 40px;
+    color: teal;
+    font-weight: 300;
+    padding-top: 5px;
 }
 .info_figura_contenido{
     text-align: center;
-    font-size: 22px;
+    font-size: 18px;
+    color: rgb(58, 209, 71);
 }
 
+/*PARTE DEL MAPA DE JUEGO*/
 #boton_jugar{
     margin-top: 25%;
     margin-bottom: 25%;
     margin-left: 45%;
     margin-right: 45%;
 }
-
-/*PARTE DEL MAPA DE JUEGO*/
-
-/*Mobile First*/
+/*Galaxy S5 V 360x640 --> Default */
 .square{
     height: 48px;
     width: 48px;
@@ -64,6 +56,10 @@ body{
 
 .fondo_index{
     background-image: url('../imagenes/fondo.png');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
 #contenedor_juego{
@@ -93,7 +89,7 @@ body{
     display: block;
 }
 
-/* 640px/telefono horizontal */
+/*Galaxy S5 H 640x360*/
 @media only screen and (min-width:640px){
     .square{
         height: 50px;
@@ -101,7 +97,7 @@ body{
     }
 }
 
-/*Para tablet*/
+/*No piden, borrar, configurarlo o hacer responsive con boostrap*/
 @media only screen and (min-width: 768px){
     .square{
         height: 80px;
@@ -116,8 +112,15 @@ body{
     }
 }
 
-/*Para desktop*/
+/*iPad pro V 1024x1366*/
 @media only screen and (min-width: 1024px){
+    /*MENÚ PRINCIPAL*/
+    #titulo_principal{
+        font-size: 100px;
+    }
+    .menu_opciones{
+        font-size: 60px;
+    }
     .square{
         height: 100px;
         width: 100px;
@@ -125,6 +128,73 @@ body{
     #botones_panel{
         width: 200px;
         height: 150px;
+    }
+    /*PARTE DE ACERCA DE*/
+    .fondo_info{
+        background-image: url('../imagenes/moon1.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+    }
+    .info_titulo{
+        font-size: 70px;
+        color: teal;
+        font-weight: 300;
+        padding-top: 10px;
+    }
+    #contexto{
+        font-size: 40px;
+        color: rgb(255, 255, 255);
+        text-align: justify;
+        line-height: 1.5;
+    }
+    .info_figura_contenido{
+        text-align: center;
+        font-size: 42px;
+        color: rgb(58, 209, 71);
+    }
+    #butMenu{
+        font-size: 50px;
+    }
+}
+/*iPad pro H 1366x1024*/
+@media only screen and (min-width: 1366px){
+    .square{
+        height: 100px;
+        width: 100px;
+    }
+    #botones_panel{
+        width: 200px;
+        height: 150px;
+    }
+    /*PARTE DE ACERCA DE*/
+    .fondo_info{
+        background-image: url('../imagenes/moon1.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+    }
+    .info_titulo{
+        font-size: 65px;
+        color: teal;
+        font-weight: 300;
+        padding-top: 10px;
+    }
+    #contexto{
+        font-size: 40px;
+        color: rgb(255, 255, 255);
+        text-align: justify;
+        line-height: 1.5;
+    }
+    .info_figura_contenido{
+        text-align: center;
+        font-size: 42px;
+        color: rgb(58, 209, 71);
+    }
+    #butMenu{
+        font-size: 50px;
     }
 }
 
