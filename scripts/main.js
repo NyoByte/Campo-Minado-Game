@@ -465,7 +465,7 @@ function AuxiliadoInitial(){
     var posFinal = new Object()
     posFinal.x = 4
     posFinal.y = 0
-    AñadirImagen("soldado.jpg",posFinal)
+    AñadirImagen("soldado.png",posFinal)
 }
 
 function SoldadoRescatado(){
