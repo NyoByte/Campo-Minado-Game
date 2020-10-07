@@ -191,7 +191,7 @@ function Posición(matriz){
 function cuentaRegresiva(){
     var cont = 3
     var comp_resultado = document.querySelector("#componente_resultado").firstElementChild
-    comp_resultado.style.color = 'white'
+    comp_resultado.className = ""
     comp_resultado.innerHTML = cont
     interval = setInterval(function(){
         if(cont<=0){
@@ -292,7 +292,7 @@ function AccionPerder(){
     //Mensaje de que perdió, hacer que se destruya el robot
     var comp_res = document.querySelector("#componente_resultado").firstElementChild
     comp_res.innerHTML = "DESTRUIDO"
-    comp_res.color = "orangered"
+    comp_res.className = "alerta"
     //Reiniciar juego
     alert("Perdiste")
     setTimeout(function(){
@@ -370,10 +370,11 @@ var mensajeResultado = function(result){
     var comp_res = document.querySelector("#componente_resultado").firstElementChild
     if(result == "sin mina"){
         comp_res.innerHTML = "ALIVIO"
-        comp_res.style.color = "royalblue"
+        comp_res.className = "alivio"
+        comp_res.className = "nav-item col-auto alivio"
     }else if(result == "mina"){
         comp_res.innerHTML = "EXPLOSIÓN"
-        comp_res.style.color = "orangered"
+        comp_res.className = "alerta"
     }
 }
 
