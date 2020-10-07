@@ -55,7 +55,7 @@ body{
 }
 
 .fondo_index{
-    background-image: url('../imagenes/fondo.png');
+    background-image: url('../imagenes/stretched-1920-1080-572870.jpg');
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
@@ -89,11 +89,17 @@ body{
     display: block;
 }
 
+.flechas_side{
+    display: none;
+}
 
 @media only screen and (min-width: 557px){
     .square{
         height: 50px;
         width: 50px;
+    }
+    .flechas_side{
+        display: block;
     }
 }
 
