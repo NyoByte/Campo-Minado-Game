@@ -191,7 +191,7 @@ function Posición(matriz){
 function cuentaRegresiva(){
     var cont = 3
     var comp_resultado = document.querySelector("#componente_resultado").firstElementChild
-    comp_resultado.color = 'white'
+    comp_resultado.style.color = 'white'
     comp_resultado.innerHTML = cont
     interval = setInterval(function(){
         if(cont<=0){

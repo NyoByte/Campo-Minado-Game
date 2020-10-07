@@ -89,13 +89,22 @@ body{
     display: block;
 }
 
-/*Galaxy S5 H 640x360*/
-@media only screen and (min-width:640px){
+
+@media only screen and (min-width: 557px){
     .square{
         height: 50px;
         width: 50px;
     }
 }
+
+/*Galaxy S5 H 640x360*/
+@media only screen and (min-width:640px){
+    .square{
+        height: 65px;
+        width: 65px;
+    }
+}
+
 
 /*No piden, borrar, configurarlo o hacer responsive con boostrap*/
 @media only screen and (min-width: 768px){
@@ -113,7 +122,7 @@ body{
 }
 
 /*iPad pro V 1024x1366*/
-@media only screen and (min-width: 1024px){
+@media only screen and (min-width: 992px){
     /*MENÚ PRINCIPAL*/
     #titulo_principal{
         font-size: 100px;
@@ -122,8 +131,8 @@ body{
         font-size: 60px;
     }
     .square{
-        height: 100px;
-        width: 100px;
+        height: 95px;
+        width: 95px;
     }
     #botones_panel{
         width: 200px;
@@ -159,10 +168,10 @@ body{
     }
 }
 /*iPad pro H 1366x1024*/
-@media only screen and (min-width: 1366px){
+@media only screen and (min-width: 1200px){
     .square{
-        height: 100px;
-        width: 100px;
+        height: 99px;
+        width: 99px;
     }
     #botones_panel{
         width: 200px;
