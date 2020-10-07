@@ -125,25 +125,52 @@ mapaInicial = `
 00000
 +0000
 `
-mapaMinas = `
+mapaMinas1 = `
 0000#
 0$$$0
 0$000
 0$000
 +$000
 `
+mapaMinas2 = `
+000$#
+0$0$0
+0$000
+000$$
++$$0$
+`
+mapaMinas3 = `
+$00$#
+00$$0
+0$$00
+0$$0$
++000$
+`
+mapaMinas4 = `
+$$00#
+0$0$0
+0$00$
+00$0$
++000$
+`
+mapaMinas5 = `
+000$#
+0$0$0
+0$0$0
+0$0$0
++$000
+`
+
+//=====VARIABLES INICIALES=====
+numNivel = 1
+listaMapaMinas = [mapaMinas1, mapaMinas2, mapaMinas3, mapaMinas4, mapaMinas5]
+mapaMinas = mapaMinas1
 mapaActual = mapaInicial
-console.log(mapaActual)
 mapaPrevio = mapaActual
-/*console.log(mapaMinas)
-mapaActual= Mover("up",mapaActual,mapaMinas)
-
-console.log(ObtenerResultado(mapaActual, mapaPrevio))
-console.log(mapaPrevio)
-console.log(mapaActual)
-// 
-console.log(ObtenerMatrixDeMapa(mapaActual))*/
-
+posAnterior = Posición(ObtenerMatrixDeMapa(mapaPrevio))
+posActual = Posición(ObtenerMatrixDeMapa(mapaActual))
+Vidas = 4
+estaBoxDirecciones=true
 //==========CODIGO==========
 function Posición(matriz){
     var posActual = new Object()
@@ -174,7 +201,7 @@ function cuentaRegresiva(){
         }
     },1000)
 }
-estaBoxDirecciones=true
+
 function OcultarDirecciones(){
     boxDirecciones = document.querySelector("#contenedor_flechas")
     boxDirecciones.className = "oculto"
@@ -186,32 +213,31 @@ function MostrarDirecciones(){
     estaBoxDirecciones=true
 }
 
-function OnClickButUp(){
-    cuentaRegresiva()
-    posicion = Posición(ObtenerMatrixDeMapa(mapaPrevio))
+function AñadirImagen(img, posicion){
     var aux = document.getElementById("pos-x"+posicion.x+"-y"+posicion.y)
-    aux.removeChild(aux.firstElementChild)
+    if(aux.firstElementChild!=null){
+        aux.removeChild(aux.firstElementChild)
+    }
     var newImg = document.createElement("img")
-    newImg.setAttribute("src","../imagenes/robot_up_mov.png")
+    newImg.setAttribute("src","../imagenes/"+img)
     newImg.setAttribute("class", "img-fluid")
     aux.appendChild(newImg)
+}
+
+function OnClickButUp(){
+    cuentaRegresiva()
+    AñadirImagen("robot_up_mov.png", posActual)
     OcultarDirecciones()
     setTimeout(function(){
         mapaActual = Mover("up",mapaActual,mapaMinas)
         Actualizar()
-    },3000)
+    },3000)    
     
 }
 
 function OnClickButDown(){
     cuentaRegresiva()
-    posicion = Posición(ObtenerMatrixDeMapa(mapaPrevio))
-    var aux = document.getElementById("pos-x"+posicion.x+"-y"+posicion.y)
-    aux.removeChild(aux.firstElementChild)
-    var newImg = document.createElement("img")
-    newImg.setAttribute("src","../imagenes/robot_down_mov.png")
-    newImg.setAttribute("class", "img-fluid")
-    aux.appendChild(newImg)
+    AñadirImagen("robot_down_mov.png", posActual)
     OcultarDirecciones()
     setTimeout(function(){
         mapaActual = Mover("down",mapaActual,mapaMinas)
@@ -221,13 +247,7 @@ function OnClickButDown(){
 
 function OnClickButLeft(){
     cuentaRegresiva()
-    posicion = Posición(ObtenerMatrixDeMapa(mapaPrevio))
-    var aux = document.getElementById("pos-x"+posicion.x+"-y"+posicion.y)
-    aux.removeChild(aux.firstElementChild)
-    var newImg = document.createElement("img")
-    newImg.setAttribute("src","../imagenes/robot_left_mov.png")
-    newImg.setAttribute("class", "img-fluid")
-    aux.appendChild(newImg)
+    AñadirImagen("robot_left_mov.png", posActual)
     OcultarDirecciones()
     setTimeout(function(){
         mapaActual = Mover("left",mapaActual,mapaMinas)
@@ -237,13 +257,7 @@ function OnClickButLeft(){
 
 function OnClickButRight(){
     cuentaRegresiva()
-    posicion = Posición(ObtenerMatrixDeMapa(mapaPrevio))
-    var aux = document.getElementById("pos-x"+posicion.x+"-y"+posicion.y)
-    aux.removeChild(aux.firstElementChild)
-    var newImg = document.createElement("img")
-    newImg.setAttribute("src","../imagenes/robot_right_mov.png")
-    newImg.setAttribute("class", "img-fluid")
-    aux.appendChild(newImg)
+    AñadirImagen("robot_right_mov.png", posActual)
     OcultarDirecciones()
     setTimeout(function(){
         mapaActual = Mover("right",mapaActual,mapaMinas)
@@ -251,24 +265,23 @@ function OnClickButRight(){
     },3000)
 }
 
-Vidas = 4
+
 function PerderVida(){
     MostrarDirecciones()
-    var aux = document.getElementById("panel_profile")
-    var coso = aux.lastElementChild
+    var aux = document.getElementById("panel_profile").lastElementChild
     Vidas--
     switch(Vidas){
         case 3:
-            coso.setAttribute("src","../imagenes/heart_75.png")
+            aux.setAttribute("src","../imagenes/heart_75.png")
             break;
         case 2:
-            coso.setAttribute("src","../imagenes/heart_50.png")
+            aux.setAttribute("src","../imagenes/heart_50.png")
             break;
         case 1:
-            coso.setAttribute("src","../imagenes/heart_25.png")
+            aux.setAttribute("src","../imagenes/heart_25.png")
             break;
         case 0:
-            coso.setAttribute("src","../imagenes/heart_0.png")
+            aux.setAttribute("src","../imagenes/heart_0.png")
             AccionPerder()
             break;
     }
@@ -290,15 +303,34 @@ function AccionPerder(){
 
 function AccionGanar(){
     OcultarDirecciones()
-    alert("Ganaste")
+    SoldadoRescatado()
+    setTimeout(function(){NextNivel()},5000)
+}
+function CrearNivel(){
+    var aux = document.getElementById("componente_nivel").firstElementChild
+    aux.innerHTML = "Nivel: "+numNivel
+}
+function NextNivel(){
+    numNivel++
+    //Vidas++ //maximo 4
+    estaBoxDirecciones=true
+    mapaMinas = listaMapaMinas[numNivel-1]
+    MostrarDirecciones()
+    AuxiliadoInitial()
+    CrearNivel()
+    BorrarMinas(ObtenerMatrixDeMapa(mapaPrevio))
+    mapaActual = mapaInicial
+    mapaPrevio = mapaActual
+    posAnterior = Posición(ObtenerMatrixDeMapa(mapaPrevio))
+    posActual = Posición(ObtenerMatrixDeMapa(mapaActual))
+    AñadirImagen("robot_pos.png",posActual)
 }
 
 function AñadirMina(posX,posY){
-    var aux = document.getElementById("pos-x"+posX+"-y"+posY)
-    var newImg = document.createElement("img")
-    newImg.setAttribute("src","../imagenes/bomba_2.png")
-    newImg.setAttribute("class", "img-fluid")
-    aux.appendChild(newImg)
+    var posBomba = new Object()
+    posBomba.x = posX
+    posBomba.y = posY
+    AñadirImagen("bomba_2.png",posBomba)   
 }
 
 function BorrarMinas(matriz){
@@ -331,11 +363,7 @@ function BorrarRobot(posicion){
 }
 
 function AñadirRobot(posicion){
-    var aux = document.getElementById("pos-x"+posicion.x+"-y"+posicion.y)
-    var newImg = document.createElement("img")
-    newImg.setAttribute("src","../imagenes/robot_pos.png")
-    newImg.setAttribute("class", "img-fluid")
-    aux.appendChild(newImg)
+    AñadirImagen("robot_pos.png",posicion)
 }
 
 var mensajeResultado = function(result){
@@ -351,14 +379,11 @@ var mensajeResultado = function(result){
 
 function Actualizar(){
     var resp = (ObtenerResultado(mapaActual,mapaPrevio));
-    console.log(resp);
     mensajeResultado(resp);
-    var matrizPrevia = ObtenerMatrixDeMapa(mapaPrevio);
-    var posPrevia = Posición(matrizPrevia);
+    posAnterior = Posición(ObtenerMatrixDeMapa(mapaPrevio));
+    posActual = Posición(ObtenerMatrixDeMapa(mapaActual));
     mapaPrevio = mapaActual;
-    var matrizActual = ObtenerMatrixDeMapa(mapaActual);
-    var posActual = Posición(matrizActual);
-    BorrarRobot(posPrevia);
+    BorrarRobot(posAnterior);
     AñadirRobot(posActual);
     if(resp=="mina"){
         BuscarMinas(ObtenerMatrixDeMapa(mapaPrevio));
@@ -426,7 +451,6 @@ var botonJugarOnClick = function(){
 }
 
 var flechasTecladoPressed = function(evt){
-    console.log(evt.key)
     if(estaBoxDirecciones==true){
         switch(evt.keyCode){
             case 37: OnClickButLeft(); break;
@@ -437,7 +461,22 @@ var flechasTecladoPressed = function(evt){
     }
 }
 
+function AuxiliadoInitial(){
+    var posFinal = new Object()
+    posFinal.x = 4
+    posFinal.y = 0
+    AñadirImagen("soldado.jpg",posFinal)
+}
+
+function SoldadoRescatado(){
+    var posFinal = new Object()
+    posFinal.x = 4
+    posFinal.y = 0
+    AñadirImagen("soldado_rescatado_victoria.png",posFinal)
+}
+
 var main = function(){
+    AuxiliadoInitial()
     document.getElementById("butInstrucciones").onclick = OnClickInstrucciones;
     document.getElementById("butUp").onclick =OnClickButUp;
     document.getElementById("butDown").onclick =OnClickButDown;
