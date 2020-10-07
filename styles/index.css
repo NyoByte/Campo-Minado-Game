@@ -89,6 +89,13 @@ body{
     display: block;
 }
 
+.flechas{
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+    fill-rule: evenodd;
+}
+
 .flechas_side{
     display: none;
 }
