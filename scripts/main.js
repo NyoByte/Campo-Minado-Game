@@ -435,6 +435,8 @@ var reiniciarJuego = function(){
     mapaPrevio = mapaActual
     posActual = Posición(ObtenerMatrixDeMapa(mapaInicial))
     posAnterior = Posición(ObtenerMatrixDeMapa(mapaInicial))
+    numNivel = 1
+    cantMov = 0
     document.querySelector("#barraVida").setAttribute("src", "../imagenes/heart_100.png")
     var compRest = document.querySelector("#componente_resultado")
     compRest.innerHTML = "----"
@@ -445,13 +447,13 @@ var botonNuevoJuegoOnClick = function(evt){
     if(ventanaJuego == true){
         console.log("entró")
         reiniciarJuego()
-        document.querySelector("#componentes_juego").style.display = "none"
-        document.querySelector("#barraVida").style.display = "none"
+        document.querySelector("#componentes_juego").className = "row container col-12 oculto"
+        document.querySelector("#barraVida").className = "img-fluid oculto"
         var conten_juego = document.querySelector("#contenedor_juego")
         conten_juego.innerHTML = ""
         conten_juego.appendChild(crearBotonJugar())
         ventanaJuego = false
-        evt.target.style.display = "none"
+        evt.target.className = "btn btn-primary oculto"
         document.querySelector("#boton_jugar").addEventListener("click", botonJugarOnClick)
     }
 }
@@ -474,10 +476,10 @@ var crearCuadrados = function(){
 
 var botonJugarOnClick = function(){
     crearCuadrados()
-    document.querySelector("#componentes_juego").style.display = "block"
+    document.querySelector("#componentes_juego").className = "row container col-12 visible"
     ventanaJuego = true
-    document.querySelector("#boton_nuevo_juego").style.display = "inline"
-    document.querySelector("#barraVida").style.display = "inline"
+    document.querySelector("#boton_nuevo_juego").className = "btn btn-primary inline"
+    document.querySelector("#barraVida").className = "img-fluid inline"
     var robot = document.createElement("img")
     robot.setAttribute("src", "../imagenes/robot_pos.png")
     robot.setAttribute("class", "img-fluid")

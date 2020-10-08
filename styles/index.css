@@ -106,6 +106,9 @@ body{
 .visible{
     display: block;
 }
+.inline{
+    display: inline;
+}
 
 .flechas{
     width: 1em;
