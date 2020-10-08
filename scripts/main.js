@@ -322,8 +322,8 @@ function AccionGanar(){
     },3000)
 }
 function CrearNivel(){
-    var aux = document.getElementById("componente_nivel").firstElementChild
-    aux.innerHTML = "Nivel: "+numNivel
+    var aux = document.getElementById("componente_nivel")
+    aux.innerHTML = numNivel
 }
 function NextNivel(){
     numNivel++
