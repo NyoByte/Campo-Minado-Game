@@ -171,6 +171,7 @@ posAnterior = Posición(ObtenerMatrixDeMapa(mapaPrevio))
 posActual = Posición(ObtenerMatrixDeMapa(mapaActual))
 Vidas = 4
 estaBoxDirecciones=true
+cantMov=0
 //==========CODIGO==========
 function Posición(matriz){
     var posActual = new Object()
@@ -190,8 +191,8 @@ function Posición(matriz){
 
 function cuentaRegresiva(){
     var cont = 3
-    var comp_resultado = document.querySelector("#componente_resultado").firstElementChild
-    comp_resultado.className = ""
+    var comp_resultado = document.querySelector("#componente_resultado")
+    comp_resultado.className ="col-6 col-xs-auto col-lg-auto col-xl-auto"
     comp_resultado.innerHTML = cont
     interval = setInterval(function(){
         if(cont<=0){
@@ -290,21 +291,36 @@ function PerderVida(){
 function AccionPerder(){
     OcultarDirecciones()
     //Mensaje de que perdió, hacer que se destruya el robot
-    var comp_res = document.querySelector("#componente_resultado").firstElementChild
+    var comp_res = document.querySelector("#componente_resultado")
     comp_res.innerHTML = "DESTRUIDO"
-    comp_res.className = "alerta"
-    //Reiniciar juego
-    alert("Perdiste")
+    comp_res.className = "col-6 col-lg-auto col-xl-auto alerta"
     setTimeout(function(){
-        location.href="main.html"
-    },5000)
+        // cambiar cuando se pierda
+        document.querySelector(".modal-title").innerHTML = "Vuelva a intentarlo"
+        document.getElementById("img_id").setAttribute("src","../imagenes/lose.jpg")
+        document.getElementById("mov_id").innerHTML="Movimientos: "+cantMov        
+        document.getElementById("vida_id").innerHTML="Vidas: "+Vidas
+        document.getElementById("butModal").className = "oculto"
+        $('#modalAccion').modal('show')
+    },3000)
 
 }
 
 function AccionGanar(){
     OcultarDirecciones()
     SoldadoRescatado()
-    setTimeout(function(){NextNivel()},5000)
+    setTimeout(function(){
+        document.getElementById("img_id").setAttribute("src","../imagenes/win.jpg")
+        document.getElementById("mov_id").innerHTML="Movimientos: "+cantMov        
+        document.getElementById("vida_id").innerHTML="Vidas: "+Vidas
+        if(numNivel==5){
+            //cambiar cuando sea el ultimo nivel
+            document.getElementById("img_id").setAttribute("src","../imagenes/win.jpg")
+            document.querySelector(".modal-title").innerHTML = "Fin del juego ¡Felicidades!"
+            document.getElementById("butModal").className = "oculto"
+        }
+        $('#modalAccion').modal('show')
+    },3000)
 }
 function CrearNivel(){
     var aux = document.getElementById("componente_nivel")
@@ -367,14 +383,13 @@ function AñadirRobot(posicion){
 }
 
 var mensajeResultado = function(result){
-    var comp_res = document.querySelector("#componente_resultado").firstElementChild
+    var comp_res = document.querySelector("#componente_resultado")
     if(result == "sin mina"){
         comp_res.innerHTML = "ALIVIO"
-        comp_res.className = "alivio"
-        comp_res.className = "nav-item col-auto alivio"
+        comp_res.className = "col-6 col-lg-auto col-xl-auto alivio"
     }else if(result == "mina"){
         comp_res.innerHTML = "EXPLOSIÓN"
-        comp_res.className = "alerta"
+        comp_res.className = "col-6 col-lg-auto col-xl-auto alerta"
     }
 }
 
@@ -386,6 +401,7 @@ function Actualizar(){
     mapaPrevio = mapaActual;
     BorrarRobot(posAnterior);
     AñadirRobot(posActual);
+    cantMov++
     if(resp=="mina"){
         BuscarMinas(ObtenerMatrixDeMapa(mapaPrevio));
         PerderVida();
@@ -419,18 +435,19 @@ var reiniciarJuego = function(){
     mapaPrevio = mapaActual
     posActual = Posición(ObtenerMatrixDeMapa(mapaInicial))
     posAnterior = Posición(ObtenerMatrixDeMapa(mapaInicial))
+    // NO VEO QUE AFECTE A ALGO
     for(square of document.getElementsByClassName("square")){
         square.innerHTML = ""
     }
-    Vidas = 4
     document.querySelector("#barraVida").setAttribute("src", "../imagenes/heart_100.png")
-    var compRest = document.querySelector("#componente_resultado").firstElementChild
-    compRest.innerHTML = "---"
-    compRest.className = ""
+    var compRest = document.querySelector("#componente_resultado")
+    compRest.innerHTML = "----"
+    compRest.className = "col-6 col-lg-auto col-xl-auto"
 }
 
 var botonNuevoJuegoOnClick = function(evt){
     if(ventanaJuego == true){
+        console.log("entró")
         reiniciarJuego()
         document.querySelector("#componentes_juego").style.display = "none"
         document.querySelector("#barraVida").style.display = "none"
@@ -469,6 +486,7 @@ var botonJugarOnClick = function(){
     robot.setAttribute("src", "../imagenes/robot_pos.png")
     robot.setAttribute("class", "img-fluid")
     document.querySelector("#pos-x0-y4").appendChild(robot)
+    AuxiliadoInitial()
 }
 
 var flechasTecladoPressed = function(evt){
@@ -499,6 +517,7 @@ function SoldadoRescatado(){
 var main = function(){
     AuxiliadoInitial()
     document.getElementById("butInstrucciones").onclick = OnClickInstrucciones;
+    document.getElementById("butModal").onclick = NextNivel;
     document.getElementById("butUp").onclick =OnClickButUp;
     document.getElementById("butDown").onclick =OnClickButDown;
     document.getElementById("butLeft").onclick =OnClickButLeft;

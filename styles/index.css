@@ -48,6 +48,14 @@ body{
     margin-right: 45%;
 }
 /*Galaxy S5 V 360x640 --> Default */
+.fondo_main{
+    background-image: url('../imagenes/fondo3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
 .square{
     height: 48px;
     width: 48px;
@@ -257,7 +265,6 @@ body{
         font-size: 50px;
     }
 }
-
 
 /*#componentes_juego{
     background-color: rgba(87, 95, 90, 0.829);
