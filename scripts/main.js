@@ -414,11 +414,16 @@ var crearBotonJugar = function(){
 var reiniciarJuego = function(){
     mapaActual = mapaInicial
     mapaPrevio = mapaActual
+    posActual = Posición(ObtenerMatrixDeMapa(mapaInicial))
+    posAnterior = Posición(ObtenerMatrixDeMapa(mapaInicial))
     for(square of document.getElementsByClassName("square")){
         square.innerHTML = ""
     }
     Vidas = 4
     document.querySelector("#barraVida").setAttribute("src", "../imagenes/heart_100.png")
+    var compRest = document.querySelector("#componente_resultado").firstElementChild
+    compRest.innerHTML = "---"
+    compRest.className = ""
 }
 
 var botonNuevoJuegoOnClick = function(evt){
