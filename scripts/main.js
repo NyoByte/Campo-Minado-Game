@@ -192,7 +192,7 @@ function Posición(matriz){
 function cuentaRegresiva(){
     var cont = 3
     var comp_resultado = document.querySelector("#componente_resultado")
-    comp_resultado.className ="col-6 col-xs-auto col-lg-auto col-xl-auto"
+    comp_resultado.className = ""
     comp_resultado.innerHTML = cont
     interval = setInterval(function(){
         if(cont<=0){
@@ -293,7 +293,7 @@ function AccionPerder(){
     //Mensaje de que perdió, hacer que se destruya el robot
     var comp_res = document.querySelector("#componente_resultado")
     comp_res.innerHTML = "DESTRUIDO"
-    comp_res.className = "col-6 col-lg-auto col-xl-auto alerta"
+    comp_res.className = "alerta"
     setTimeout(function(){
         // cambiar cuando se pierda
         document.querySelector(".modal-title").innerHTML = "Vuelva a intentarlo"
@@ -386,10 +386,10 @@ var mensajeResultado = function(result){
     var comp_res = document.querySelector("#componente_resultado")
     if(result == "sin mina"){
         comp_res.innerHTML = "ALIVIO"
-        comp_res.className = "col-6 col-lg-auto col-xl-auto alivio"
+        comp_res.className = "alivio"
     }else if(result == "mina"){
         comp_res.innerHTML = "EXPLOSIÓN"
-        comp_res.className = "col-6 col-lg-auto col-xl-auto alerta"
+        comp_res.className = "alerta"
     }
 }
 
@@ -435,14 +435,10 @@ var reiniciarJuego = function(){
     mapaPrevio = mapaActual
     posActual = Posición(ObtenerMatrixDeMapa(mapaInicial))
     posAnterior = Posición(ObtenerMatrixDeMapa(mapaInicial))
-    // NO VEO QUE AFECTE A ALGO
-    for(square of document.getElementsByClassName("square")){
-        square.innerHTML = ""
-    }
     document.querySelector("#barraVida").setAttribute("src", "../imagenes/heart_100.png")
     var compRest = document.querySelector("#componente_resultado")
     compRest.innerHTML = "----"
-    compRest.className = "col-6 col-lg-auto col-xl-auto"
+    compRest.className = ""
 }
 
 var botonNuevoJuegoOnClick = function(evt){
