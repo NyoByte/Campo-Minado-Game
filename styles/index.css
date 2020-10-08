@@ -48,9 +48,17 @@ body{
     margin-right: 45%;
 }
 /*Galaxy S5 V 360x640 --> Default */
+.fondo_main{
+    background-image: url('../imagenes/fondo3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
 .square{
     height: 48px;
-    width: 48px;
+    width: 62.6px;
     background-image: url('../imagenes/map_earth.png');
 }
 
