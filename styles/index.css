@@ -62,12 +62,22 @@ body{
     background-repeat: no-repeat;
 }
 
+#padre_contenedor_juego{
+    background-color: dimgrey;
+}
+
+#componentes_juego{
+    background-color: rgba(52,58,64);;
+}
+
 #contenedor_juego{
     background-color: dimgrey;
     flex-wrap: wrap;
     background-repeat: round;
     justify-content: space-around;
     margin: 0;
+    height: 240px;
+    width: 240px;
 }
 
 .contenedor_panel{
@@ -113,6 +123,10 @@ body{
         height: 50px;
         width: 50px;
     }
+    #contenedor_juego{
+        height: 250px;
+        width: 250px;
+    }
     .flechas_side{
         display: block;
     }
@@ -124,6 +138,10 @@ body{
         height: 65px;
         width: 65px;
     }
+    #contenedor_juego{
+        height: 325px;
+        width: 325;
+    }
 }
 
 
@@ -132,6 +150,10 @@ body{
     .square{
         height: 80px;
         width: 80px;
+    }
+    #contenedor_juego{
+        height: 400px;
+        width: 400px;
     }
     .contenedor_panel{
         width: 100%;
@@ -154,6 +176,10 @@ body{
     .square{
         height: 95px;
         width: 95px;
+    }
+    #contenedor_juego{
+        height: 475px;
+        width: 475px;
     }
     #botones_panel{
         width: 200px;
@@ -193,6 +219,10 @@ body{
     .square{
         height: 99px;
         width: 99px;
+    }
+    #contenedor_juego{
+        height: 495px;
+        width: 495px;
     }
     #botones_panel{
         width: 200px;

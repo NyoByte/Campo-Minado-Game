@@ -403,12 +403,15 @@ function OnClickInstrucciones(){
 var ventanaJuego = true
 
 var crearBotonJugar = function(){
+    var div  = document.createElement("div")
+    div.className = "row align-items-center justify-content-center"
     var boton = document.createElement("button")
     boton.setAttribute("type", "button")
     boton.setAttribute("class", "btn btn-primary btn-lg")
     boton.setAttribute("id", "boton_jugar")
     boton.innerHTML = "Jugar"
-    return boton
+    div.appendChild(boton)
+    return div
 }
 
 var reiniciarJuego = function(){
@@ -429,23 +432,35 @@ var reiniciarJuego = function(){
 var botonNuevoJuegoOnClick = function(evt){
     if(ventanaJuego == true){
         reiniciarJuego()
-        for(square of document.getElementsByClassName("square")){
-            square.style.backgroundImage = "none"
-        }
         document.querySelector("#componentes_juego").style.display = "none"
         document.querySelector("#barraVida").style.display = "none"
-        document.querySelector("#pos-x2-y2").appendChild(crearBotonJugar())
+        var conten_juego = document.querySelector("#contenedor_juego")
+        conten_juego.innerHTML = ""
+        conten_juego.appendChild(crearBotonJugar())
         ventanaJuego = false
         evt.target.style.display = "none"
         document.querySelector("#boton_jugar").addEventListener("click", botonJugarOnClick)
     }
 }
 
-var botonJugarOnClick = function(){
-    document.querySelector("#pos-x2-y2").innerHTML = ""
-    for(square of document.getElementsByClassName("square")){
-        square.style.backgroundImage = "url('../imagenes/map_earth.png')"
+var crearCuadrados = function(){
+    var contenedor_juego = document.querySelector("#contenedor_juego")
+    contenedor_juego.innerHTML = ""
+    for(var y=0; y<5; y++){
+        var fila = document.createElement("div")
+        fila.className = "row"
+        for(var x=0; x<5; x++){
+            var square = document.createElement("div")
+            square.className = "col square border border-dark"
+            square.id = "pos-x"+x+"-y"+y
+            fila.appendChild(square)
+        }
+        contenedor_juego.appendChild(fila)
     }
+}
+
+var botonJugarOnClick = function(){
+    crearCuadrados()
     document.querySelector("#componentes_juego").style.display = "block"
     ventanaJuego = true
     document.querySelector("#boton_nuevo_juego").style.display = "inline"
