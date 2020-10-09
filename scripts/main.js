@@ -294,6 +294,7 @@ function AccionPerder(){
     var comp_res = document.querySelector("#componente_resultado")
     comp_res.innerHTML = "DESTRUIDO"
     comp_res.className = "letras_comps text-danger"
+    AñadirImagen("robot_destruido.png",posActual)
     setTimeout(function(){
         document.querySelector(".modal-title").innerHTML = "Vuelva a intentarlo"
         document.getElementById("img_id").setAttribute("src","../imagenes/lose.jpg")
