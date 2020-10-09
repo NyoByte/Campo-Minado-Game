@@ -22,6 +22,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
+    <audio id="audio">
+        <source type="audio/mp3" src="../audios/suspenso.mp3"> 
+    </audio>
 </head>
 
 <body class="container fondo_main">
@@ -30,13 +33,13 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">¡Felicitaciones!</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                    <h5 class="modal-title" id="modal_main_titulo">¡Felicitaciones!</h5>
+                    <button id="Xmodal" type="button" class="close oculto" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="laX">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <img id="img_id" src="../imagenes/win.jpg" class="img-fluid" alt="Imagen responsive">
+                    <img id="img_id" src="../imagenes/next.jpg" class="img-fluid" alt="Imagen responsive">
                     <div id="mov_id">Movimientos: </div>
                     <div id="vida_id">Vidas: </div>
                 </div>
@@ -52,61 +55,59 @@
     <div class="modal fade letra_instrucciones" id="modalInstrucciones" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Instrucciones:</h5>
+                <div class="modal-header bg-info">
+                    <h5 class="modal-title text-dark" id="modal_inst_titulo">Instrucciones:</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        <!--es la X-->
+                        <span aria-hidden="true" class="laX">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body text-light bg-dark text-justify" id="modal_inst_contenido">
                     <p>
-                        El terreno ha sido minado con explosivos por un ataque terrorista
+                        *El terreno ha sido minado con explosivos por un ataque terrorista
                         y hay un único sobreviviente. Tu misión es controlar al robot para
-                        que llegue al sobreviviente y lo pueda rescatar. El robot solamente
-                        puede soportar 3 explosiones, es decir, queda totalmente destruido
-                        en la 4ta detonación. Si ese fuere el caso, se podrá enviar un robot nuevo.
+                        que llegue al sobreviviente y lo pueda rescatar.
                     </p>
-                    <p>
-                        Muevete usando las flechas de direcciones en pantalla o las flechas del teclado.
-                    </p>
-                    <p>En cada casilla a la que te muevas puede haber una mina.</p>
-                    <p>Una vez hagas un movimiento, tendrás que esperar 3 segundos para saber si hay una mina o no.</p>
-                    <p>Ganas llegando al soldado, o pierdes si te quedas sin vida.</p>
+                    <p>*El robot solamente puede soportar 3 explosiones, es decir, queda totalmente destruidoen la 4ta detonación.</p>
+                    <p>*El juego consta de 5 niveles distintos.</p>
+                    <p>*Muevete usando las flechas de direcciones en pantalla o las flechas del teclado.</p>
+                    <p class="text-warning">*¡Cuidado! En cada casilla a la que te muevas puede haber una mina.</p>
+                    <p>*Una vez hagas un movimiento, tendrás que esperar 3 segundos para saber si hay una mina o no.</p>
+                    <p>*No se puede pasar por una mina explotada</p>
+                    <p>*Ganas llegando al soldado y pierdes si te quedas sin vida.</p>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+                <div class="modal-footer p-0">
+                    <button type="button" class="btn btn-success m-0 btn-block" id="modal_inst_but" data-dismiss="modal">OK</button>
                 </div>
             </div>
         </div>
     </div>
     <!--Fin ventana modal-->
     <div class="row justify-content-center">
-        <h1>CAMPO MINADO GAME</h1>
+        <h1 id="main_tituloPrincipal">~CAMPO MINADO GAME~</h1>
     </div>
     <div class="row container">
         <div class="container col-md-9">
             <!--Componentes-->
             <div class="row container col-12" id="componentes_juego">
-                <nav class="navbar navbar-expand-sm text-white bg-dark mb-1 col-12 justify-content-center">
+                <nav class="navbar navbar-expand-sm text-white bg-dark col-12 justify-content-center">
                     <div>
                         <ul class="navbar-nav col-12">
                             <li class="nav-item col-auto ml-2 mr-2">
                                 <div class="row">
-                                    <h5 class="mr-2">Nivel:</h5>
-                                    <h5 id="componente_nivel">1</h5>
+                                    <h5 class="mr-2 letras_comps">Nivel:</h5>
+                                    <h5 class="letras_comps text-primary" id="componente_nivel">1</h5>
                                 </div>
                             </li>
                             <li class="nav-item col-auto ml-2 mr-2">
                                 <div class="row">
-                                    <h5 class="mr-2">Mapa:</h5>
-                                    <h5 id="componente_mapa">Earth</h5>
+                                    <h5 class="letras_comps mr-2">Mapa:</h5>
+                                    <h5 class="letras_comps text-primary" id="componente_mapa">EARTH</h5>
                                 </div>
                             </li>
                             <li class="nav-item col-auto ml-2 mr-2">
                                 <div class="row">
-                                    <h5 class="mr-2">Resultado:</h5>
-                                    <h5 class="" id="componente_resultado">----</h5>
+                                    <h5 class="letras_comps mr-2">Resultado:</h5>
+                                    <h5 class="letras_comps text-primary" id="componente_resultado">----</h5>
                                 </div>
                             </li>
                         </ul>
@@ -146,7 +147,7 @@
                     </div>
                     <div class="row">
                         <div class="col square border border-dark" id="pos-x0-y4">
-                            <img src="../imagenes/robot_pos.png" alt="Sprite robot front faced" class="img-fluid">
+                            <img src="../imagenes/robot_pos.png" alt="Sprite robot front faced" class="img-fluid img-panel">
                         </div>
                         <div class="col square border border-dark" id="pos-x1-y4"></div>
                         <div class="col square border border-dark" id="pos-x2-y4"></div>
@@ -157,17 +158,17 @@
             </div>
         </div>
         <!--Panel-->
-        <div class="row container col-md-3">
+        <div class="row container col-md-3" id="panel">
             <!--Figura-->
             <div class="contenedor_panel" id="panel_profile">
-                <img src="../imagenes/profile_player_2.png" id="figura_profileP" class="img-fluid" alt="Imagen player">
+                <img src="../imagenes/profile_player_2.png" id="figura_profile" class="img-fluid" alt="Imagen player">
                 <img src="../imagenes/heart_100.png" id="barraVida" alt="Imagen vida" class="img-fluid">
             </div>
             <div class="contenedor_panel">
                 <div class="btn-group-vertical mt-2 mb-2 btn-group-sm" id="botones_panel">
-                    <button type="button" class="btn btn-info" id="butInstrucciones">Instrucciones</button>
-                    <button type="button" class="btn btn-primary" id="boton_nuevo_juego">Nuevo Juego</button>
-                    <a href="info.html" class="btn btn-secondary">Acerca de</a>
+                    <button type="button" class="btn btn-lg btn-info" id="butInstrucciones">Instrucciones</button>
+                    <button type="button" class="btn btn-lg btn-primary" id="boton_nuevo_juego">Nuevo Juego</button>
+                    <a href="info.html" class="btn btn-lg btn-secondary" id="butAcercaDe">Acerca de</a>
                 </div>
             </div>
             <div class="col flechas_side"></div>

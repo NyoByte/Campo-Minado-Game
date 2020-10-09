@@ -162,16 +162,16 @@ mapaMinas5 = `
 `
 
 //=====VARIABLES INICIALES=====
-numNivel = 1
-listaMapaMinas = [mapaMinas1, mapaMinas2, mapaMinas3, mapaMinas4, mapaMinas5]
-mapaMinas = mapaMinas1
-mapaActual = mapaInicial
-mapaPrevio = mapaActual
-posAnterior = Posición(ObtenerMatrixDeMapa(mapaPrevio))
-posActual = Posición(ObtenerMatrixDeMapa(mapaActual))
-Vidas = 4
-estaBoxDirecciones=true
-cantMov=0
+var numNivel = 1
+var listaMapaMinas = [mapaMinas1, mapaMinas2, mapaMinas3, mapaMinas4, mapaMinas5]
+var mapaMinas = mapaMinas1
+var mapaActual = mapaInicial
+var mapaPrevio = mapaActual
+var posAnterior = Posición(ObtenerMatrixDeMapa(mapaPrevio))
+var posActual = Posición(ObtenerMatrixDeMapa(mapaActual))
+var Vidas = 4
+var estaBoxDirecciones=true
+var cantMov=0
 //==========CODIGO==========
 function Posición(matriz){
     var posActual = new Object()
@@ -188,12 +188,13 @@ function Posición(matriz){
     }    
     return posActual
 }
-
 function cuentaRegresiva(){
     var cont = 3
     var comp_resultado = document.querySelector("#componente_resultado")
-    comp_resultado.className = ""
+    comp_resultado.className = "letras_comps text-warning"
     comp_resultado.innerHTML = cont
+    document.getElementById("boton_nuevo_juego").disabled = true
+    ActivarSonido()
     interval = setInterval(function(){
         if(cont<=0){
             clearInterval(self)
@@ -221,7 +222,7 @@ function AñadirImagen(img, posicion){
     }
     var newImg = document.createElement("img")
     newImg.setAttribute("src","../imagenes/"+img)
-    newImg.setAttribute("class", "img-fluid")
+    newImg.setAttribute("class", "img-fluid img-panel")
     aux.appendChild(newImg)
 }
 
@@ -233,7 +234,6 @@ function OnClickButUp(){
         mapaActual = Mover("up",mapaActual,mapaMinas)
         Actualizar()
     },3000)    
-    
 }
 
 function OnClickButDown(){
@@ -293,15 +293,15 @@ function AccionPerder(){
     //Mensaje de que perdió, hacer que se destruya el robot
     var comp_res = document.querySelector("#componente_resultado")
     comp_res.innerHTML = "DESTRUIDO"
-    comp_res.className = "alerta"
+    comp_res.className = "letras_comps text-danger"
     setTimeout(function(){
-        // cambiar cuando se pierda
         document.querySelector(".modal-title").innerHTML = "Vuelva a intentarlo"
         document.getElementById("img_id").setAttribute("src","../imagenes/lose.jpg")
         document.getElementById("mov_id").innerHTML="Movimientos: "+cantMov        
         document.getElementById("vida_id").innerHTML="Vidas: "+Vidas
         document.getElementById("butModal").className = "oculto"
-        $('#modalAccion').modal('show')
+        document.getElementById("Xmodal").className = "close visible"
+        $('#modalAccion').modal({backdrop: 'static', keyboard: false})
     },3000)
 
 }
@@ -310,7 +310,7 @@ function AccionGanar(){
     OcultarDirecciones()
     SoldadoRescatado()
     setTimeout(function(){
-        document.getElementById("img_id").setAttribute("src","../imagenes/win.jpg")
+        document.getElementById("img_id").setAttribute("src","../imagenes/next.jpg")
         document.getElementById("mov_id").innerHTML="Movimientos: "+cantMov        
         document.getElementById("vida_id").innerHTML="Vidas: "+Vidas
         if(numNivel==5){
@@ -318,19 +318,23 @@ function AccionGanar(){
             document.getElementById("img_id").setAttribute("src","../imagenes/win.jpg")
             document.querySelector(".modal-title").innerHTML = "Fin del juego ¡Felicidades!"
             document.getElementById("butModal").className = "oculto"
+            document.getElementById("Xmodal").className = "close visible"
         }
-        $('#modalAccion').modal('show')
+        $('#modalAccion').modal({backdrop: 'static', keyboard: false})
     },3000)
 }
 function CrearNivel(){
     var aux = document.getElementById("componente_nivel")
     aux.innerHTML = numNivel
+    aux.className = "letras_comps text-primary"
 }
 function NextNivel(){
     numNivel++
     //Vidas++ //maximo 4
     estaBoxDirecciones=true
     mapaMinas = listaMapaMinas[numNivel-1]
+    document.getElementById("componente_resultado").innerHTML = "----"
+    document.getElementById("componente_resultado").className = "letras_comps text-primary"
     MostrarDirecciones()
     AuxiliadoInitial()
     CrearNivel()
@@ -386,15 +390,23 @@ var mensajeResultado = function(result){
     var comp_res = document.querySelector("#componente_resultado")
     if(result == "sin mina"){
         comp_res.innerHTML = "ALIVIO"
-        comp_res.className = "alivio"
+        comp_res.className = "letras_comps text-primary"
     }else if(result == "mina"){
         comp_res.innerHTML = "EXPLOSIÓN"
-        comp_res.className = "alerta"
+        comp_res.className = "letras_comps text-danger"
+    }else if(result == "fin"){
+        comp_res.innerHTML = "FELICIDADES"
+        comp_res.className = "letras_comps text-success"
+    }else{
+        comp_res.innerHTML = "RESTRINGIDO"
+        comp_res.className = "letras_comps text-warning"
     }
 }
 
 function Actualizar(){
+    document.getElementById("boton_nuevo_juego").disabled = false
     var resp = (ObtenerResultado(mapaActual,mapaPrevio));
+    console.log(resp)
     mensajeResultado(resp);
     posAnterior = Posición(ObtenerMatrixDeMapa(mapaPrevio));
     posActual = Posición(ObtenerMatrixDeMapa(mapaActual));
@@ -402,6 +414,7 @@ function Actualizar(){
     BorrarRobot(posAnterior);
     AñadirRobot(posActual);
     cantMov++
+    DesactivarSonido()
     if(resp=="mina"){
         BuscarMinas(ObtenerMatrixDeMapa(mapaPrevio));
         PerderVida();
@@ -413,7 +426,7 @@ function Actualizar(){
 }
 
 function OnClickInstrucciones(){
-    $('#modalInstrucciones').modal('show')
+    $('#modalInstrucciones').modal({backdrop: 'static', keyboard: false})
 }
 
 var ventanaJuego = true
@@ -437,15 +450,21 @@ var reiniciarJuego = function(){
     posAnterior = Posición(ObtenerMatrixDeMapa(mapaInicial))
     numNivel = 1
     cantMov = 0
+    mapaMinas = mapaMinas1
+    estaBoxDirecciones=true
+    document.getElementById("butModal").className = "btn btn-block btn-success visible"
+    document.getElementById("Xmodal").className = "close oculto"
     document.querySelector("#barraVida").setAttribute("src", "../imagenes/heart_100.png")
     var compRest = document.querySelector("#componente_resultado")
     compRest.innerHTML = "----"
-    compRest.className = ""
+    compRest.className = "letras_comps text-primary"
+    var compNivel = document.getElementById("componente_nivel")
+    compNivel.innerHTML = numNivel
+    compNivel.className = "letras_comps text-primary"
 }
 
 var botonNuevoJuegoOnClick = function(evt){
     if(ventanaJuego == true){
-        console.log("entró")
         reiniciarJuego()
         document.querySelector("#componentes_juego").className = "row container col-12 oculto"
         document.querySelector("#barraVida").className = "img-fluid oculto"
@@ -455,6 +474,7 @@ var botonNuevoJuegoOnClick = function(evt){
         ventanaJuego = false
         evt.target.className = "btn btn-primary oculto"
         document.querySelector("#boton_jugar").addEventListener("click", botonJugarOnClick)
+        OcultarDirecciones()
     }
 }
 
@@ -482,9 +502,11 @@ var botonJugarOnClick = function(){
     document.querySelector("#barraVida").className = "img-fluid inline"
     var robot = document.createElement("img")
     robot.setAttribute("src", "../imagenes/robot_pos.png")
-    robot.setAttribute("class", "img-fluid")
+    robot.setAttribute("class", "img-fluid img-panel")
     document.querySelector("#pos-x0-y4").appendChild(robot)
     AuxiliadoInitial()
+    MostrarDirecciones()
+    //location.reload()
 }
 
 var flechasTecladoPressed = function(evt){
@@ -510,6 +532,16 @@ function SoldadoRescatado(){
     posFinal.x = 4
     posFinal.y = 0
     AñadirImagen("soldado_rescatado_victoria.png",posFinal)
+}
+
+function ActivarSonido(){
+    var song = document.getElementById("audio")
+    song.play()
+}
+function DesactivarSonido(){
+    var song = document.getElementById("audio")
+    song.pause()
+    song.setAttribute("src","../audios/suspenso.mp3")
 }
 
 var main = function(){

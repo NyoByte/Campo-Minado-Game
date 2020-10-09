@@ -13,6 +13,13 @@ body{
     font-size: 45px;
     line-height: 1;
 }
+#figura_profile{
+    max-width: 100%;
+    height: auto;
+}.laX{
+    font-size: 30px;
+}
+
 
 /*PARTE DE ACERCA DE*/
 .fondo_info{
@@ -121,14 +128,6 @@ body{
     display: none;
 }
 
-.alivio{
-    color: royalblue;
-}
-
-.alerta{
-    color: orangered;
-}
-
 @media only screen and (min-width: 557px){
     .square{
         height: 50px;
@@ -173,6 +172,12 @@ body{
         width: 150px;
         height: 100px;
     }
+    #modal_bvb_titulo{
+        font-size: 50px;
+    }
+    #modal_bvb_but{
+        font-size: 50px;
+    }
 }
 
 /*iPad pro V 1024x1366*/
@@ -196,6 +201,38 @@ body{
         width: 200px;
         height: 150px;
     }
+    #modal_bvb_titulo, #modal_bvb_but{
+        font-size: 50px;
+    }
+    #modal_inst_titulo, #modal_inst_but{
+        font-size: 50px;
+    }
+    #modal_inst_contenido{
+        font-size: 30px;
+
+    }
+    #butInstrucciones, #boton_nuevo_juego, #butAcercaDe{
+        font-size: 35px;
+    }
+    #main_tituloPrincipal{
+        font-size: 120px;
+    }
+    .letras_comps{
+        font-size: 35px;
+    }    
+    #modal_main_titulo, #butModal{
+        font-size: 60px;
+    }
+    #mov_id, #vida_id{
+        font-size: 40px;
+    }
+    .laX{
+        font-size: 80px;
+    }    
+    #boton_jugar{
+        font-size: 100px;
+    }
+    
     /*PARTE DE ACERCA DE*/
     .fondo_info{
         background-image: url('../imagenes/moon1.jpg');
@@ -267,6 +304,25 @@ body{
     #butMenu{
         font-size: 50px;
     }
+}
+
+@media only screen and (max-width:360px){
+    #panel{
+        margin-top: 10px;
+    }
+    .img-panel{
+        height: 45px;
+    }
+    #modal_main_titulo, #butModal{
+        font-size: 30px;
+    }
+    #mov_id, #vida_id{
+        font-size: 20px;
+    }
+    .laX{
+        font-size: 30px;
+    }
+    
 }
 
 /*#componentes_juego{
