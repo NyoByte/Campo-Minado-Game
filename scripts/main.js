@@ -194,7 +194,7 @@ function cuentaRegresiva(){
     comp_resultado.className = "letras_comps text-warning"
     comp_resultado.innerHTML = cont
     document.getElementById("boton_nuevo_juego").disabled = true
-    ActivarSonido()
+    ActivarSonido_suspenso("suspenso")
     interval = setInterval(function(){
         if(cont<=0){
             clearInterval(self)
@@ -271,6 +271,7 @@ function PerderVida(){
     MostrarDirecciones()
     var aux = document.getElementById("panel_profile").lastElementChild
     Vidas--
+    ActivarSonido_explosion()
     switch(Vidas){
         case 3:
             aux.setAttribute("src","../imagenes/heart_75.png")
@@ -295,6 +296,7 @@ function AccionPerder(){
     comp_res.innerHTML = "DESTRUIDO"
     comp_res.className = "letras_comps text-danger"
     AñadirImagen("robot_destruido.png",posActual)
+    ActivarSonido_robotRip()
     setTimeout(function(){
         document.querySelector(".modal-title").innerHTML = "Vuelva a intentarlo"
         document.getElementById("img_id").setAttribute("src","../imagenes/lose.jpg")
@@ -303,6 +305,7 @@ function AccionPerder(){
         document.getElementById("butModal").className = "oculto"
         document.getElementById("Xmodal").className = "close visible"
         $('#modalAccion').modal({backdrop: 'static', keyboard: false})
+        DesactivarSonido_RobotRip()
     },3000)
 
 }
@@ -415,7 +418,7 @@ function Actualizar(){
     BorrarRobot(posAnterior);
     AñadirRobot(posActual);
     cantMov++
-    DesactivarSonido()
+    DesactivarSonido_suspenso()
     if(resp=="mina"){
         BuscarMinas(ObtenerMatrixDeMapa(mapaPrevio));
         PerderVida();
@@ -535,14 +538,34 @@ function SoldadoRescatado(){
     AñadirImagen("soldado_rescatado_victoria.png",posFinal)
 }
 
-function ActivarSonido(){
-    var song = document.getElementById("audio")
+function ActivarSonido_suspenso(song){
+    var song = document.getElementById("audio_suspenso")
     song.play()
 }
-function DesactivarSonido(){
-    var song = document.getElementById("audio")
+function DesactivarSonido_suspenso(){
+    var song = document.getElementById("audio_suspenso")
+    song.setAttribute("src", "../audios/suspenso.mp3")
     song.pause()
-    song.setAttribute("src","../audios/suspenso.mp3")
+}
+
+function ActivarSonido_explosion(song){
+    var song = document.getElementById("audio_explosion")
+    song.play()
+}
+function DesactivarSonido_explosion(){
+    var song = document.getElementById("audio_explosion")
+    song.setAttribute("src", "../audios/explosion.mp3")
+    song.pause()
+}
+
+function ActivarSonido_robotRip(song){
+    var song = document.getElementById("audio_robotRip")
+    song.play()
+}
+function DesactivarSonido_RobotRip(){
+    var song = document.getElementById("audio_robotRip")
+    song.setAttribute("src", "../audios/robotRip.mp3")
+    song.pause()
 }
 
 var main = function(){

@@ -215,7 +215,7 @@ body{
         font-size: 35px;
     }
     #main_tituloPrincipal{
-        font-size: 120px;
+        font-size: 85px;
     }
     .letras_comps{
         font-size: 35px;
@@ -324,9 +324,9 @@ body{
     }
     
 }
-@media only screen and (min-height:500px){
+@media only screen and (min-height:800px){
     #main_tituloPrincipal{
-        font-size: 50px;
+        font-size: 45px;
     }
     
 }
