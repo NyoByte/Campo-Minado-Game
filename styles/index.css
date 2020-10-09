@@ -324,6 +324,12 @@ body{
     }
     
 }
+@media only screen and (min-height:500px){
+    #main_tituloPrincipal{
+        font-size: 50px;
+    }
+    
+}
 
 /*#componentes_juego{
     background-color: rgba(87, 95, 90, 0.829);
