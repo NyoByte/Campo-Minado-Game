@@ -456,6 +456,7 @@ var reiniciarJuego = function(){
     cantMov = 0
     mapaMinas = mapaMinas1
     estaBoxDirecciones=true
+    Vidas=4
     document.getElementById("butModal").className = "btn btn-block btn-success visible"
     document.getElementById("Xmodal").className = "close oculto"
     document.querySelector("#barraVida").setAttribute("src", "../imagenes/heart_100.png")
